@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const authRoutes = require('./routes/auth');
-const User = require('./models/user'); // Define tu modelo de usuario aquí
+const User = require('./models/user'); // Aquí importa el modelo
+const authRoutes = require('./routes/auth'); // Ajusta la ruta de importación
 
 const app = express();
 
@@ -12,11 +12,16 @@ const app = express();
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
-
-// Configuración de mongoose y conexión a la base de datos
-mongoose.connect('mongodb://localhost:27017/contratar', {
+// Conectarse a MongoDB Atlas
+mongoose.connect('mongodb+srv://juancruztriventi:juancruztriventi@contratar.0vqvfsg.mongodb.net/contratar2?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('Connected to MongoDB Atlas');
+})
+.catch(error => {
+  console.error('Error connecting to MongoDB Atlas:', error);
 });
 
 // Configuración de express-session
@@ -33,7 +38,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // Configuración de passport-local
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
@@ -41,7 +45,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Middleware para pasar el usuario autenticado a las vistas
 app.use((req, res, next) => {
-  res.locals.user = req.user; // Agrega el usuario autenticado a "res.locals"
+  res.locals.user = req.user;
   next();
 });
 
