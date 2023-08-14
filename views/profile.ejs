@@ -32,9 +32,6 @@
   <h2 class="text-lg font-semibold mt-4 mb-4">Descripción:</h2>
   <p><%= user.description %></p>
 
-  <!-- Botón para editar la descripción -->
-  <a href="#" class="text-blue-500 hover:underline" id="editDescriptionLink">Editar Descripción</a>
-
  <!-- Contenedor para el formulario de edición de descripción -->
 <div id="descriptionFormContainer" class="text-center" style="display: none;">
     <form action="/update-profile-description" method="POST" class="mt-4">
@@ -43,7 +40,11 @@
       <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full mt-2 text-center">Actualizar Descripción</button>
     </form>
   </div>
-<a href="/" class="mt-4 text-blue-500 hover:underline">Inicio</a>
+  <div class="flex text-center items-center justify-center p-2">
+      <a href="/users" class="text-blue-500 hover:underline mx-2">Inicio</a>
+      <!-- Botón para editar la descripción -->
+      <a href="#" class="text-blue-500 hover:underline mx-2" id="editDescriptionLink">Editar Descripción</a>
+</div>
 
 
 
