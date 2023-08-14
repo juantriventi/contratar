@@ -52,6 +52,14 @@ app.use((req, res, next) => {
 // Configuración de las rutas
 app.use('/', authRoutes); // Ajusta las rutas según tu estructura
 
+app.get('/', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.redirect('/users'); // Si el usuario está autenticado, redirige a la lista de usuarios
+  } else {
+    res.render('index', { user: null });
+  }
+});
+
 app.listen(3000, () => {
   console.log('Server started on http://localhost:3000');
 });

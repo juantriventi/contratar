@@ -74,9 +74,35 @@ router.post('/signup', async (req, res) => {
 // Ruta para mostrar el perfil del usuario
 router.get('/profile', (req, res) => {
   if (req.isAuthenticated()) {
+    console.log(req.user);
   res.render('profile', { user: req.user }); // Pasa el usuario autenticado a la vista
   } else {
     res.render("login")
+  }
+});
+
+
+router.post('/update-profile-image', async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    user.profileImage = req.body.profileImage; // Actualiza el campo de la imagen de perfil con la URL ingresada
+    await user.save();
+    res.redirect('/profile');
+  } catch (error) {
+    console.error(error);
+    res.redirect('/profile');
+  }
+});
+
+
+// Ruta para mostrar la lista de usuarios
+router.get('/users', async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.render('users', { users }); // Renderiza la vista 'all-users' y pasa la lista de usuarios como contexto
+  } catch (error) {
+    console.error(error);
+    res.render('error', { message: 'Error al obtener la lista de usuarios.' });
   }
 });
 

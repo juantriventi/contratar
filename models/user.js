@@ -5,9 +5,9 @@ const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   role: String,
+  profileImage: String, // Agrega el campo para la URL de la foto de perfil
 });
 
 userSchema.plugin(passportLocalMongoose);
 
-// Exporta el modelo directamente
 module.exports = mongoose.model('User', userSchema);
