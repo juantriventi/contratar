@@ -6,6 +6,8 @@ const userSchema = new mongoose.Schema({
   password: String,
   role: String,
   profileImage: String, // Agrega el campo para la URL de la foto de perfil
+  price: Number,
+  contact: String
 });
 
 userSchema.plugin(passportLocalMongoose);

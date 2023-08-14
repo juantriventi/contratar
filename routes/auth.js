@@ -56,6 +56,8 @@ router.post('/signup', async (req, res) => {
     const newUser = new User({
       username: req.body.username,
       role: req.body.role, 
+      price: req.body.price,
+      contact: req.body.contact
     });
 
     // Registrar el usuario en la base de datos
