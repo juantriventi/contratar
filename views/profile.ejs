@@ -29,9 +29,21 @@
       <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full mt-2 text-center">Subir imagen</button>
     </form>
   </div>
-    <a href="/" class="mt-4 text-blue-500 hover:underline">Inicio</a>
+  <h2 class="text-lg font-semibold mt-4 mb-4">Descripción:</h2>
+  <p><%= user.description %></p>
 
+  <!-- Botón para editar la descripción -->
+  <a href="#" class="text-blue-500 hover:underline" id="editDescriptionLink">Editar Descripción</a>
+
+ <!-- Contenedor para el formulario de edición de descripción -->
+<div id="descriptionFormContainer" class="text-center" style="display: none;">
+    <form action="/update-profile-description" method="POST" class="mt-4">
+      <label for="description">Descripción:</label>
+      <textarea name="description" id="description" class="block w-full px-4 py-2 border rounded" placeholder="Escribe tu descripción aquí" maxlength="150"></textarea>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full mt-2 text-center">Actualizar Descripción</button>
+    </form>
   </div>
+<a href="/" class="mt-4 text-blue-500 hover:underline">Inicio</a>
 
 
 
@@ -43,6 +55,14 @@
       event.preventDefault(); // Evita que el enlace redireccione
       photoFormContainer.style.display = 'block'; // Muestra el formulario y el botón
     });
+
+    const editDescriptionLink = document.getElementById('editDescriptionLink');
+  const descriptionFormContainer = document.getElementById('descriptionFormContainer');
+
+  editDescriptionLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    descriptionFormContainer.style.display = 'block';
+  });
   </script>
 </body>
 </html>

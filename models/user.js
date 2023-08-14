@@ -5,9 +5,10 @@ const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   role: String,
-  profileImage: String, // Agrega el campo para la URL de la foto de perfil
+  profileImage: String,
   price: Number,
-  contact: String
+  contact: String,
+  description: String 
 });
 
 userSchema.plugin(passportLocalMongoose);

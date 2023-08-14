@@ -8,10 +8,16 @@
 <body class="bg-gray-100 h-screen flex items-center justify-center">
   <div class="bg-white p-8 rounded-lg shadow-md w-1/3 text-center">
     <% if (user) { %>
-      <h1 class="text-2xl font-bold mb-4">Bienvenido, <%= user.username %></h1>
-      <a href="/logout" class="text-blue-500 hover:underline">Cerrar Sesión</a>
-      <a href="/profile" class="block mt-2 text-blue-500 hover:underline">Ver Perfil</a>       
-    <% } else { %>
+        <div class="flex justify-center">
+      <h1 class="text-2xl font-bold mb-4 mt-2">Bienvenido, <%= user.username %></h1>
+        <div class="block space-x-4 mt-4">
+          <a href="/profile" class="text-blue-500 hover:underline">Ver Perfil</a>
+          <a href="/users" class="text-blue-500 hover:underline">Usuarios</a>
+          <a href="/logout" class="text-blue-500 hover:underline">Cerrar Sesión</a>
+        </div>
+      </div>
+      
+      <% } else { %>
       <p>No estás logueado. Por favor <a href="/login" class="text-blue-500 hover:underline">inicia sesión</a>.</p>
     <% } %>
   </div>

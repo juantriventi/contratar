@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 // Ruta para mostrar el formulario de inicio de sesión
 router.get('/login', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect('/'); 
+    return res.redirect('/users'); 
   }
   res.render('login');
 });
@@ -36,7 +36,7 @@ router.post('/login', (req, res, next) => {
         }
   
         console.log('Autenticación exitosa:', user);
-        return res.redirect('/');
+        return res.redirect('/users');
       });
     })(req, res, next);
   });
@@ -44,7 +44,7 @@ router.post('/login', (req, res, next) => {
 // Ruta para mostrar el formulario de registro
 router.get('/signup', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect('/'); 
+    return res.redirect('/users'); 
   }
   res.render('signup');
 });
@@ -65,7 +65,7 @@ router.post('/signup', async (req, res) => {
 
     // Autenticar al usuario recién registrado
     passport.authenticate('local')(req, res, () => {
-      res.redirect('/');
+      res.redirect('/users');
     });
   } catch (error) {
     console.error(error);
@@ -95,6 +95,20 @@ router.post('/update-profile-image', async (req, res) => {
     res.redirect('/profile');
   }
 });
+
+// Ruta para actualizar la descripción del perfil
+router.post('/update-profile-description', async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    user.description = req.body.description; // Actualiza el campo de descripción con el texto ingresado
+    await user.save();
+    res.redirect('/profile');
+  } catch (error) {
+    console.error(error);
+    res.redirect('/profile');
+  }
+});
+
 
 
 // Ruta para mostrar la lista de usuarios
