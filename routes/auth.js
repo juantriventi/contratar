@@ -54,8 +54,9 @@ router.post('/signup', async (req, res) => {
   try {
     // Crear un nuevo usuario con los datos del formulario
     const newUser = new User({
+      fullName: req.body.fullName,
       username: req.body.username,
-      role: req.body.role, 
+      profession: req.body.profession, 
       price: req.body.price,
       contact: req.body.contact
     });

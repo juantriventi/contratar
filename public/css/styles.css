@@ -1,5 +1,19 @@
 #editPhotoLink{
     position: absolute;
-    margin-left: 200px;
+    margin-left: 20px;
     margin-top: 50px;
 }
+
+@media (max-width: 768px) {
+    #editPhotoLink {
+        position: absolute;
+        margin-left: 20px;
+        margin-top: 50px;
+    }
+  }
+
+  
+  
+  
+  
+  

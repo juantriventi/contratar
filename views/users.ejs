@@ -3,6 +3,7 @@
 <head>
   <title>Home</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     .card {
       overflow: hidden;
@@ -29,29 +30,43 @@
     }
   </style>
 </head>
-<body class="bg-gray-100 mt-4">
-  <div class="bg-white p-8 rounded-lg shadow-md w-5/6 mx-auto mt-4 mb-auto">
+<body class="bg-gray-100">
+  <div class="bg-white p-4 rounded-lg shadow-md w-full md:w-5/6 mx-auto mb-auto lg:mt-2">
     <% if (user) { %>
-      <h1 class="text-2xl font-bold mb-4 flex justify-between items-center">
-        <span>Bienvenido, <%= user.username %></span>
-        <span>
-          <a href="/profile" class="text-blue-500 hover:underline">Ver Perfil</a>
-          <span class="mx-2">|</span>
-          <a href="/logout" class="text-blue-500 hover:underline">Cerrar Sesión</a>
-        </span>
-      </h1>
-      <h2 class="text-lg font-semibold mt-4 mb-4">Contrata a alguien:</h2>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="flex justify-between items-center">
+        <div class="flex">
+          <h1 class="font-bold mt-1">Contratar</h1>
+          <img src="/images/argentina.png" alt="bandea" class="w-5 h-6 ml-1 mt-1">
+        </div>
+        <div class="flex items-center">
+          <a href="/" class="hover:underline mr-4">
+            Inicio
+          </a>
+          <a href="/profile" class="hover:underline mr-4">
+            Perfil
+          </a>
+          <a href="/logout" class="mr-2 lg:mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
+          </a>
+        </div>
+      </div>
+        <h1 class="text-2xl font-bold mb-2 mt-2 text-center">
+          <div>Bienvenido, <%= user.fullName %></div>
+        </h1>
+
+      <h2 class="text-lg font-semibold mt-4 mb-2">Contrata un profesional:</h2>
+      <div class="mt-4 md:flex md:flex-col lg:grid lg:grid-cols-2 gap-4">
         <% users.forEach((user, index) => { %>
-          <div class="bg-gray-200 rounded-lg shadow-md card">
+          <div class="bg-gray-200 rounded-lg shadow-md card mt-2">
             <div class="p-4 flex items-center cursor-pointer">
               <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-8 h-8 object-cover mr-2">
               <div class="flex-1">
                 <div class="flex items-center">
-                  <span class="font-semibold mr-2"><%= user.username %></span>
+                  <span class="font-semibold mr-2"><%= user.fullName %></span>
                 </div>
                 <span class="text-sm text-gray-600">$<%= user.price %>/hr</span>
               </div>
+              <p class="mr-3"><%= user.profession %></p>
               <div class="ml-auto arrow-down">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
                   <path d="M2.56 5.44a.5.5 0 0 0 .688.062L8 1.207l4.756 4.295a.5.5 0 1 0 .624-.78l-5-4.5a.5.5 0 0 0-.624 0l-5 4.5a.5.5 0 0 0-.062.687z"/>
@@ -59,7 +74,6 @@
               </div>
             </div>
             <div class="breadcrumb p-4">
-              <h2 class="text-lg font-semibold">Descripción:</h2>
               <% if (user.description && user.description.length > 0) { %>
                 <p><%= user.description %></p>
               <% } else { %>
