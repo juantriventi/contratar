@@ -54,19 +54,34 @@
           <div>Bienvenido, <%= user.fullName %></div>
         </h1>
 
-      <h2 class="text-lg font-semibold mt-4 mb-2">Contrata un profesional:</h2>
-      <div class="mt-4 md:flex md:flex-col lg:grid lg:grid-cols-2 gap-4">
+      <h2 class="text-lg font-semibold mt-4 mb-2">Contrata un profesional</h2>
+      <h2 class="text-lg font-semibold mt-2 mb-2">Filtrar por profesión:</h2>
+      <div class="mt-2 mb-4">
+        <select id="profession-select" class="block w-full p-2 border rounded-md">
+          <option value="all">Mostrar todos</option>
+          <option value="Tecnologia">Tecnologia</option>
+          <option value="Gastronomia">Gastronomia</option>
+          <option value="Abogacia">Abogacia</option>
+          <option value="Indumentaria">Indumentaria</option>
+          <option value="Economia">Economia</option>
+          <option value="Arquitectura">Arquitectura</option>
+          <option value="Diseño">Diseño</option>
+          <option value="Constructores">Constructores</option>
+          <option value="Redes sociales">Redes sociales</option>
+        </select>
+      </div>
+      <div class="mt-4 md:flex md:flex-col lg:grid lg:grid-cols-2 gap-2">
         <% users.forEach((user, index) => { %>
           <div class="bg-gray-200 rounded-lg shadow-md card mt-2">
             <div class="p-4 flex items-center cursor-pointer">
-              <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-8 h-8 object-cover mr-2">
+              <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-10 h-10 object-cover mr-2">
               <div class="flex-1">
                 <div class="flex items-center">
                   <span class="font-semibold mr-2"><%= user.fullName %></span>
                 </div>
                 <span class="text-sm text-gray-600">$<%= user.price %>/hr</span>
               </div>
-              <p class="mr-3"><%= user.profession %></p>
+              <p class="mr-3 mb-2 profession"><%= user.profession %></p>
               <div class="ml-auto arrow-down">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
                   <path d="M2.56 5.44a.5.5 0 0 0 .688.062L8 1.207l4.756 4.295a.5.5 0 1 0 .624-.78l-5-4.5a.5.5 0 0 0-.624 0l-5 4.5a.5.5 0 0 0-.062.687z"/>
@@ -86,27 +101,44 @@
     <% } else { %>
       <p>No estás logueado. Por favor <a href="/login" class="text-blue-500 hover:underline">inicia sesión</a>.</p>
     <% } %>
-  </div>
-
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const cards = document.querySelectorAll(".card");
-  cards.forEach((card) => {
-    card.addEventListener("click", function () {
-      this.classList.toggle("expanded");
-    });
-    const arrow = card.querySelector(".arrow-down");
-    arrow.addEventListener("click", function (event) {
-      event.stopPropagation();
-      card.classList.toggle("expanded");
-    });
-    const breadcrumb = card.querySelector(".breadcrumb");
-    breadcrumb.addEventListener("click", function (event) {
-      event.stopPropagation(); // Detiene la propagación del evento de clic
+  </div> 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.addEventListener("click", function () {
+        this.classList.toggle("expanded");
+      });
+      const arrow = card.querySelector(".arrow-down");
+      arrow.addEventListener("click", function (event) {
+        event.stopPropagation();
+        card.classList.toggle("expanded");
+      });
+      const breadcrumb = card.querySelector(".breadcrumb");
+      breadcrumb.addEventListener("click", function (event) {
+        event.stopPropagation(); // Detiene la propagación del evento de clic
+      });
     });
   });
-});
 
-  </script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const professionSelect = document.querySelector("#profession-select");
+    const cards = document.querySelectorAll(".card");
+  
+    professionSelect.addEventListener("change", function () {
+      const selectedProfession = professionSelect.value;
+      cards.forEach((card) => {
+        const profession = card.querySelector(".profession").textContent;
+        if (selectedProfession === "all" || profession === selectedProfession) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+
+</script>
 </body>
 </html>
