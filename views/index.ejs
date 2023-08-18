@@ -2,26 +2,107 @@
 <html>
 <head>
   <title>Home</title>
-  <!-- Agrega el enlace a tu archivo CSS de Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
-<body class="bg-gray-100 h-screen flex items-center justify-center">
-  <div class="bg-white p-8 rounded-lg shadow-md w-1/3 text-center">
-    <% if (user) { %>
-        <div class="flex justify-center">
-      <h1 class="text-2xl font-bold mb-4 mt-2">Bienvenido, <%= user.username %></h1>
-        <div class="block space-x-4 mt-4">
-          <a href="/profile" class="text-blue-500 hover:underline">Ver Perfil</a>
-          <a href="/users" class="text-blue-500 hover:underline">Usuarios</a>
-          <a href="/logout" class="text-blue-500 hover:underline">Cerrar Sesión</a>
+<body class="bg-gray-100">
+  <div class="bg-white p-4 shadow-md">
+    <div class="container mx-auto">
+      <div class="flex justify-between items-center">
+        <div class="flex">
+          <h1 class="font-bold mt-1">Contratar</h1>
+          <img src="/images/argentina.png" alt="bandera" class="w-5 h-6 ml-1 mt-1">
+        </div>
+        <div class="flex items-center">
+          <a href="/" class="hover:underline mr-4">
+            Inicio
+          </a>
+          <a href="/profile" class="hover:underline mr-4">
+            Perfil
+          </a>
+          <a href="/logout" class="mr-2 lg:mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
+          </a>
         </div>
       </div>
-      
-      <% } else { %>
-      <p>No estás logueado. Por favor <a href="/login" class="text-blue-500 hover:underline">inicia sesión</a>.</p>
-    <% } %>
+    </div>
   </div>
+
+  <% if (user) { %>
+    <div class="flex items-center justify-center">
+      <div class="text-center mt-20">
+        <p class="text-4xl font-semibold">
+          Encontrá el
+          <span id="word-to-change" class="text-blue-600 word-transition ml-2 mr-1"></span>
+          que nececitas
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center justify-center mt-5 py-5">
+      <div class="w-full 2xl:w-3/4 px-8 md:px-32 lg:px-16 2xl:px-0">
+        <div class="w-full grid grid-cols-1 xl:grid-cols-2 gap-8">
+          <a href="/jobs" class="card">
+            <div class="bg-white shadow-2xl rounded-lg py-4">
+              <img src="/images/pexels-andrea-piacquadio-927022.jpg" alt="Ofertas de trabajo"  class="w-full h-64 object-cover rounded-t-lg">
+              <p class="text-xl text-center font-bold text-blue-600 mt-5">Ver ofertas de trabajo</p>
+              <p class="text-center py-4">
+                <span class="text-4xl font-bold text-gray-700">
+                  23
+                </span>
+                <span class="text-xs uppercase text-gray-500">
+                   <span x-text="billingType">ofertas activas</span>
+                </span>
+              </p>
+              <!-- Content of Basic plan -->
+            </div>
+          </a>
+          <a href="/users" class="card">
+            <div class="bg-white shadow-2xl rounded-lg py-4">
+              <img src="/images/pexels-sora-shimazaki-5673502.jpg" alt="Buscar empleados" class="w-full h-64 object-cover rounded-t-lg">
+              <p class="text-xl text-center font-bold text-blue-600 mt-5">Buscar empleados</p>
+              <p class="text-center py-4">
+                <span class="text-4xl font-bold text-gray-700">
+                  89
+                </span>
+                <span class="text-xs uppercase text-gray-500">
+                   <span x-text="billingType">empleados</span>
+                </span>
+              </p>
+              <!-- Content of Premium plan -->
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } else { %>
+    <p class="text-center mt-8">No estás logueado. Por favor <a href="/login" class="text-blue-500 hover:underline">inicia sesión</a>.</p>
+  <% } %>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const wordToChange = document.getElementById("word-to-change");
+      const words = ["TRABAJO", "EMPLEADO"];
+      let index = 0; // Start with "TRABAJO"
+
+      function updateWord() {
+        wordToChange.innerHTML = `
+          <span class="text-blue-600 word-fade">${words[index]}</span>
+        `;
+
+        setTimeout(() => {
+          index = (index + 1) % words.length;
+          wordToChange.innerHTML = `
+            <span class="text-blue-600 word-fade">${words[index]}</span>
+          `;
+        }, 5000);
+      }
+
+      updateWord();
+      setInterval(updateWord, 5000);
+    });
+  </script>
+
 </body>
 </html>

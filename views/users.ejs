@@ -3,32 +3,8 @@
 <head>
   <title>Home</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    .card {
-      overflow: hidden;
-      transition: height 1s;
-    }
-    .card.expanded {
-      height: auto;
-    }
-    .arrow-down {
-      transform: rotate(0deg);
-      transition: transform 0.2s;
-    }
-    .expanded .arrow-down {
-      transform: rotate(180deg);
-    }
-    .breadcrumb {
-      display: none;
-      margin-top: -15px;
-      padding: 10px;
-      background-color: transparent;
-    }
-    .expanded .breadcrumb {
-      display: block;
-    }
-  </style>
 </head>
 <body class="bg-gray-100">
   <div class="bg-white p-4 rounded-lg shadow-md w-full md:w-5/6 mx-auto mb-auto lg:mt-2">
@@ -72,7 +48,7 @@
       </div>
       <div class="mt-4 md:flex md:flex-col lg:grid lg:grid-cols-2 gap-2">
         <% users.forEach((user, index) => { %>
-          <div class="bg-gray-200 rounded-lg shadow-md card mt-2">
+          <div class="bg-gray-200 rounded-lg shadow-md user-card mt-2">
             <div class="p-4 flex items-center cursor-pointer">
               <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-10 h-10 object-cover mr-2">
               <div class="flex-1">
@@ -104,7 +80,7 @@
   </div> 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".card");
+    const cards = document.querySelectorAll(".user-card");
     cards.forEach((card) => {
       card.addEventListener("click", function () {
         this.classList.toggle("expanded");
@@ -124,7 +100,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     const professionSelect = document.querySelector("#profession-select");
-    const cards = document.querySelectorAll(".card");
+    const cards = document.querySelectorAll(".user-card");
   
     professionSelect.addEventListener("change", function () {
       const selectedProfession = professionSelect.value;

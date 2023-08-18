@@ -12,6 +12,64 @@
     }
   }
 
+
+  /*Index*/
+
+  .card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    transition: .3s;
+  }
+  .word-transition {
+    position: relative;
+    animation: slideUpDown 10s  alternate;
+  }
+  .word-fade {
+    position: relative;
+    animation: fade 5s  alternate;
+  }
+  @keyframes fade {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes slideUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /*Users*/
+
+  .user-card {
+    overflow: hidden;
+    transition: height 1s;
+  }
+  .card.expanded {
+    height: auto;
+  }
+  .arrow-down {
+    transform: rotate(0deg);
+    transition: transform 0.2s;
+  }
+  .expanded .arrow-down {
+    transform: rotate(180deg);
+  }
+  .breadcrumb {
+    display: none;
+    margin-top: -15px;
+    padding: 10px;
+    background-color: transparent;
+  }
+  .expanded .breadcrumb {
+    display: block;
+  }
   
   
   
