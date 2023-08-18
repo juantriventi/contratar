@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 // Ruta para mostrar el formulario de inicio de sesión
 router.get('/login', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect('/users'); 
+    return res.redirect('/'); 
   }
   res.render('login');
 });
@@ -36,7 +36,7 @@ router.post('/login', (req, res, next) => {
         }
   
         console.log('Autenticación exitosa:', user);
-        return res.redirect('/users');
+        return res.redirect('/');
       });
     })(req, res, next);
   });
@@ -44,7 +44,7 @@ router.post('/login', (req, res, next) => {
 // Ruta para mostrar el formulario de registro
 router.get('/signup', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect('/users'); 
+    return res.redirect('/'); 
   }
   res.render('signup');
 });
@@ -66,7 +66,7 @@ router.post('/signup', async (req, res) => {
 
     // Autenticar al usuario recién registrado
     passport.authenticate('local')(req, res, () => {
-      res.redirect('/users');
+      res.redirect('/');
     });
   } catch (error) {
     console.error(error);
