@@ -89,3 +89,9 @@
   
   
   
+/*Jobs*/
+
+.oferta-descripcion {
+  max-height: 50px;
+  overflow-y: scroll;
+}

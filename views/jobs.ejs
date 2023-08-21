@@ -6,13 +6,7 @@
   <link rel="stylesheet" href="/css/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<style>
-  .relative {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-</style>
+
 <body class="bg-white ">
   <div class="p-4 shadow-md">
     <div class="container mx-auto">
@@ -76,7 +70,7 @@
         <option value="Redes sociales">Redes sociales</option>
       </select>
       <input type="number" name="precio" placeholder="Precio total" required class="block mx-auto mb-2 p-2 rounded-lg w-64">
-      <textarea name="descripcion" placeholder="Descripción oferta" required class="block mx-auto mb-2 p-2 rounded-lg w-64 h-32" maxlength="60"></textarea>
+      <textarea name="descripcion" placeholder="Descripción oferta" required class="block mx-auto mb-2 p-2 rounded-lg w-64 h-32" maxlength="30"></textarea>
       <button class="bg-blue-500 text-white rounded-lg py-2 px-6" type="submit">Crear Oferta</button>
     </form>
     
@@ -91,8 +85,8 @@
                 <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-20 h-20 object-cover mr-2">
                 <div class="ml-2 flex-grow"> <!-- Agregamos 'flex-grow' para ocupar el espacio restante -->
                   <p><%= oferta.categoria %></p>
-                  <p>$<%= oferta.precio %> total</p>
-                  <p><%= oferta.descripcion %></p>
+                  <p>$<%= new Intl.NumberFormat('es-ES', { style: 'decimal' }).format(Number(oferta.precio)) %></p>
+                  <p class="oferta-descripcion"><%= oferta.descripcion %></p>
                 </div>
                 <div class="flex flex-col items-center md:flex-row md:mr-2">
                   <% if (user._id.toString() === oferta.userId.toString()) { %>
