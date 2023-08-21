@@ -173,10 +173,10 @@ router.get('/jobs', async (req, res) => {
         const ofertasArray = user.ofertas || [];
 
         // Filtrar las ofertas por categoría si se proporciona un parámetro de consulta
-        if (req.query.categoria) {
+        if (req.query.categoria && typeof req.query.categoria === 'string') {
           const categoriaFilter = req.query.categoria.toLowerCase();
           const filteredOfertas = ofertasArray.filter(oferta =>
-            oferta.categoria.toLowerCase() === categoriaFilter
+            oferta.categoria && oferta.categoria.toLowerCase() === categoriaFilter
           );
           allOfertas = allOfertas.concat(filteredOfertas);
         } else {
@@ -186,7 +186,6 @@ router.get('/jobs', async (req, res) => {
 
       // Mezclar el array de todas las ofertas en un orden aleatorio
       const shuffledOfertas = shuffleArray(allOfertas);
-
       return res.render('jobs', {
         users,
         ofertasArray: shuffledOfertas,
@@ -201,6 +200,8 @@ router.get('/jobs', async (req, res) => {
 });
 
 
+
+
 router.post('/users/create-offer', async (req, res) => {
   try {
     const { categoria, precio, descripcion, oferta } = req.body;
@@ -211,10 +212,10 @@ router.post('/users/create-offer', async (req, res) => {
     }
 
     user.ofertas = user.ofertas || '[]'; 
-    const ofertasArray = JSON.parse(user.ofertas); 
+    const ofertasArray = user.ofertas; 
 
     // Verificar si el usuario ya tiene 5 ofertas
-    if (ofertasArray.length >= 5) {
+    if (ofertasArray.length >= 1) {
       return res.redirect('/jobs'); 
     }
 
@@ -222,7 +223,7 @@ router.post('/users/create-offer', async (req, res) => {
     ofertasArray.push({ categoria, precio, descripcion, oferta, userId: user._id });
 
     // Convertir el array de ofertas de nuevo a una cadena JSON
-    user.ofertas = JSON.stringify(ofertasArray);
+    user.ofertas = ofertasArray;
 
     await user.save(); 
 
@@ -245,14 +246,9 @@ router.post('/users/delete-offer', async (req, res) => {
     }
 
     if (user.ofertas && Array.isArray(user.ofertas)) {
-      // Parsear las ofertas almacenadas como JSON en un array de objetos
-      const ofertasArray = user.ofertas.map(oferta => JSON.parse(oferta));
+      const updatedOfertasArray = user.ofertas.filter(oferta => oferta._id && oferta._id.toString() !== offerId);
 
-      // Filtrar y eliminar la oferta con el offerId
-      const updatedOfertasArray = ofertasArray.filter(oferta => oferta._id !== offerId);
-
-      // Convertir el array de objetos de ofertas de nuevo a JSON
-      user.ofertas = updatedOfertasArray.map(oferta => JSON.stringify(oferta));
+      user.ofertas = updatedOfertasArray;
 
       await user.save();
     }
@@ -263,9 +259,6 @@ router.post('/users/delete-offer', async (req, res) => {
     res.render('error', { message: 'Error al eliminar la oferta.' });
   }
 });
-
-
-
 
 
 
