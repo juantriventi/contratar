@@ -92,9 +92,11 @@
             <div class="flex flex-col items-center md:flex-row md:mr-2">
               <% if (user._id.toString() === oferta.userId.toString()) { %>
                 <form id="deleteForm_<%= oferta._id %>" action="/users/delete-offer" method="post">
-                  <input type="hidden" name="offerId" value="<%= oferta._id %>">
+                  <input type="hidden" name="offerCategory" value="<%= oferta.categoria %>">
+                  <input type="hidden" name="offerPrice" value="<%= oferta.precio %>">
+                  <input type="hidden" name="offerDescription" value="<%= oferta.descripcion %>">
                   <button class="bg-red-500 text-white rounded-lg px-6 py-2 mb-2 md:mb-0 md:mr-2" type="submit">Eliminar</button>
-                </form>
+                </form>                
               <% } else { %>
                 <button class="bg-blue-500 text-white rounded-lg px-6 py-2">
                   <a href="mailto:<%= oferta.user.email %>?subject=contratar.com.ar/aplicacion" target="_blank" rel="noopener noreferrer">

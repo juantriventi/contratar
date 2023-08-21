@@ -215,7 +215,7 @@ router.post('/users/create-offer', async (req, res) => {
     const ofertasArray = user.ofertas; 
 
     // Verificar si el usuario ya tiene 5 ofertas
-    if (ofertasArray.length >= 1) {
+    if (ofertasArray.length >= 5) {
       return res.redirect('/jobs'); 
     }
 
@@ -248,7 +248,7 @@ router.post('/users/create-offer', async (req, res) => {
 
 router.post('/users/delete-offer', async (req, res) => {
   try {
-    const { offerId } = req.body;
+    const { offerCategory, offerPrice, offerDescription } = req.body;
     const user = await User.findById(req.user._id);
 
     if (!user) {
@@ -256,10 +256,13 @@ router.post('/users/delete-offer', async (req, res) => {
     }
 
     if (user.ofertas && Array.isArray(user.ofertas)) {
-      const updatedOfertasArray = user.ofertas.filter(oferta => oferta._id && oferta._id.toString() !== offerId);
+      const uniqueOfferIdentifier = offerCategory + offerPrice + offerDescription;
+      const updatedOfertasArray = user.ofertas.filter(oferta => {
+        const ofertaIdentifier = oferta.categoria + oferta.precio + oferta.descripcion;
+        return ofertaIdentifier !== uniqueOfferIdentifier;
+      });
 
       user.ofertas = updatedOfertasArray;
-
       await user.save();
     }
 
@@ -269,6 +272,8 @@ router.post('/users/delete-offer', async (req, res) => {
     res.render('error', { message: 'Error al eliminar la oferta.' });
   }
 });
+
+
 
 
 
