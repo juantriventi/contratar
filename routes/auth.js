@@ -220,8 +220,18 @@ router.post('/users/create-offer', async (req, res) => {
     }
 
     // Agregar la nueva oferta al array con categoría, precio y descripción
-    ofertasArray.push({ categoria, precio, descripcion, oferta, userId: user._id });
-
+    ofertasArray.push({
+      titulo: oferta, // Título de la oferta
+      categoria,      // Categoría de la oferta
+      precio,         // Precio de la oferta
+      descripcion,    // Descripción de la oferta
+      userId: user._id,
+      user: {
+        profileImage: user.profileImage, // Imagen del usuario almacenada en la base de datos
+        username: user.username,
+        email: user.email
+      }
+    });
     // Convertir el array de ofertas de nuevo a una cadena JSON
     user.ofertas = ofertasArray;
 
