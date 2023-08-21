@@ -4,9 +4,31 @@ const router = express.Router();
 const User = require("../models/user")
 
 // Ruta para mostrar el formulario de inicio de sesión
-router.get('/', (req, res) => {
-  res.render('index'); 
+router.get('/', async (req, res) => {
+  try {
+    let userCount = 0;
+    let offerCount = 0; // Inicializar el contador de ofertas
+    if (req.isAuthenticated()) {
+      const users = await User.find({});
+      
+      // Contar usuarios que no son reclutadores o tienen un precio definido
+      userCount = users.filter(user => user.profession !== 'Reclutador' || user.price).length;
+
+      // Contar el número total de ofertas en todos los usuarios
+      users.forEach(user => {
+        const ofertasArray = JSON.parse(user.ofertas || '[]');
+        offerCount += ofertasArray.length;
+      });
+    }
+    
+    res.render('index', { userCount, offerCount }); // Pasar las variables a la vista
+  } catch (error) {
+    console.error(error);
+    res.render('error', { message: 'Error al obtener la lista de usuarios.' });
+  }
 });
+
+
 
 // Ruta para mostrar el formulario de inicio de sesión
 router.get('/login', (req, res) => {
@@ -35,7 +57,7 @@ router.post('/login', (req, res, next) => {
           return next(loginErr);
         }
   
-        console.log('Autenticación exitosa:', user);
+        console.log('Autenticación exitosa:', user.username);
         return res.redirect('/');
       });
     })(req, res, next);
@@ -58,7 +80,9 @@ router.post('/signup', async (req, res) => {
       username: req.body.username,
       profession: req.body.profession, 
       price: req.body.price,
-      contact: req.body.contact
+      contact: req.body.contact,
+      email: req.body.email,
+      profileImage: '/images/blank_profile.png'
     });
 
     // Registrar el usuario en la base de datos
@@ -111,17 +135,92 @@ router.post('/update-profile-description', async (req, res) => {
 });
 
 
-
 // Ruta para mostrar la lista de usuarios
 router.get('/users', async (req, res) => {
   try {
     const users = await User.find({});
-    res.render('users', { users }); // Renderiza la vista 'all-users' y pasa la lista de usuarios como contexto
+    
+    // Filter out recruiters from the users list
+    const filteredUsers = users.filter(user => user.profession !== 'Reclutador');
+    
+    res.render('users', { users: filteredUsers }); // Render the 'users' view with the filtered user list
   } catch (error) {
     console.error(error);
     res.render('error', { message: 'Error al obtener la lista de usuarios.' });
   }
 });
+
+
+// Agrega esta función en tu archivo de rutas junto con tus otras rutas y lógica
+function shuffleArray(array) {
+  const shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+}
+
+// Ruta para mostrar la vista de trabajos (jobs)
+router.get('/jobs', async (req, res) => {
+  if (req.isAuthenticated()) {
+    try {
+      const users = await User.find().lean();
+
+      // Crear un array de todas las ofertas de todos los usuarios
+      let allOfertas = [];
+      users.forEach(user => {
+        const ofertasArray = JSON.parse(user.ofertas || '[]');
+        allOfertas = allOfertas.concat(ofertasArray);
+      });
+
+      // Mezclar el array de todas las ofertas en un orden aleatorio
+      const shuffledOfertas = shuffleArray(allOfertas);
+
+      return res.render('jobs', { users, ofertasArray: shuffledOfertas, errorMessage: null });
+    } catch (error) {
+      console.error(error);
+      return res.redirect('/jobs');
+    }
+  }
+  res.render('login');
+});
+
+
+router.post('/users/create-offer', async (req, res) => {
+  try {
+    const { categoria, precio, descripcion, oferta } = req.body;
+
+    const user = await User.findById(req.user._id); 
+    if (!user) {
+      return res.redirect('/jobs'); 
+    }
+
+    user.ofertas = user.ofertas || '[]'; 
+    const ofertasArray = JSON.parse(user.ofertas); 
+
+    // Verificar si el usuario ya tiene 5 ofertas
+    if (ofertasArray.length >= 5) {
+      return res.redirect('/jobs'); 
+    }
+
+    // Agregar la nueva oferta al array con categoría, precio y descripción
+    ofertasArray.push({ categoria, precio, descripcion, oferta });
+
+    // Convertir el array de ofertas de nuevo a una cadena JSON
+    user.ofertas = JSON.stringify(ofertasArray);
+
+    await user.save(); 
+
+    res.redirect('/jobs');
+  } catch (error) {
+    console.error(error);
+    // Renderizar la vista de trabajos con un mensaje de error
+    res.render('jobs', { user: req.user, errorMessage: 'Error! Solo puedes tener 5 ofertas activas.' });
+  }
+});
+
+
 
 
 // Ruta para cerrar sesión

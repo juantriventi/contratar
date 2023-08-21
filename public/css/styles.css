@@ -19,6 +19,14 @@
     margin-top: -18px;
   }
 
+  .card{
+    max-height: 300px;
+  }
+  @media (max-width: 768px) {
+    .card{
+      max-height: 450px;
+    }
+  }
   .card:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);

@@ -9,7 +9,9 @@ const userSchema = new mongoose.Schema({
   profileImage: String,
   price: Number,
   contact: String,
-  description: String 
+  email: String,
+  description: String,
+  ofertas: String
 });
 
 userSchema.plugin(passportLocalMongoose);

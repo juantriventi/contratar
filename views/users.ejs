@@ -30,8 +30,8 @@
   </div>
     <% if (user) { %>
       <div class="container sm:px-20 p-2 mx-auto">
-      <h1 class="text-4xl font-semibold mt-4 mb-2 text-center">Busca un empleado</h1>
-      <h2 class="text-lg font-semibold mt-2 mb-2">Filtrar por rubro:</h2>
+        <h1 class="text-4xl font-semibold mt-4 mb-2 text-center">Encontra tu candidato ideal</h1>
+        <h2 class="text-lg font-semibold mt-2 mb-2">Filtrar por rubro:</h2>
       <div class="mt-2 mb-4">
         <select id="profession-select" class="bg-gray-100 block w-full p-2 border rounded-md">
           <option value="all">Mostrar todos</option>
@@ -83,43 +83,7 @@
     <% } %>
   </div> 
   
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".user-card");
-    cards.forEach((card) => {
-      card.addEventListener("click", function () {
-        this.classList.toggle("expanded");
-      });
-      const arrow = card.querySelector(".arrow-down");
-      arrow.addEventListener("click", function (event) {
-        event.stopPropagation();
-        card.classList.toggle("expanded");
-      });
-      const breadcrumb = card.querySelector(".breadcrumb");
-      breadcrumb.addEventListener("click", function (event) {
-        event.stopPropagation(); // Detiene la propagación del evento de clic
-      });
-    });
-  });
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const professionSelect = document.querySelector("#profession-select");
-    const cards = document.querySelectorAll(".user-card");
-  
-    professionSelect.addEventListener("change", function () {
-      const selectedProfession = professionSelect.value;
-      cards.forEach((card) => {
-        const profession = card.querySelector(".profession").textContent;
-        if (selectedProfession === "all" || profession === selectedProfession) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    });
-  });
-
-</script>
+  <script src="/utils/expand.js"></script>
+<script src="/utils/filters.js"></script>
 </body>
 </html>

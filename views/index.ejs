@@ -48,25 +48,25 @@
               <p class="text-xl text-center font-bold text-blue-600 mt-5">Ver ofertas de trabajo</p>
               <p class="text-center py-2">
                 <span class="text-4xl font-bold text-gray-700">
-                  23
+                  <%= offerCount %>
                 </span>
                 <span class="text-xs uppercase text-gray-500">
-                   <span x-text="billingType">ofertas activas</span>
+                   <span>ofertas activas</span>
                 </span>
               </p>
               <!-- Content of Basic plan -->
             </div>
           </a>
-          <a href="/users" class="card">
+          <a href="/users" class="card  pb-3">
             <div class="bg-white shadow-2xl rounded-lg py-4">
               <img src="/images/pexels-sora-shimazaki-5673502.jpg" alt="Buscar empleados" class="foto-inicio w-full h-64 object-cover rounded-t-lg">
               <p class="text-xl text-center font-bold text-blue-600 mt-5">Buscar empleados</p>
               <p class="text-center py-2">
                 <span class="text-4xl font-bold text-gray-700">
-                  89
+                  <%= userCount %>
                 </span>
                 <span class="text-xs uppercase text-gray-500">
-                   <span x-text="billingType">empleados</span>
+                   <span>candidatos</span>
                 </span>
               </p>
               <!-- Content of Premium plan -->
@@ -84,29 +84,7 @@
     </div>
   <% } %>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const wordToChange = document.getElementById("word-to-change");
-      const words = ["TRABAJO", "EMPLEADO"];
-      let index = 0; // Start with "TRABAJO"
-
-      function updateWord() {
-        wordToChange.innerHTML = `
-          <span class="text-blue-600 word-fade">${words[index]}</span>
-        `;
-
-        setTimeout(() => {
-          index = (index + 1) % words.length;
-          wordToChange.innerHTML = `
-            <span class="text-blue-600 word-fade">${words[index]}</span>
-          `;
-        }, 5000);
-      }
-
-      updateWord();
-      setInterval(updateWord, 5000);
-    });
-  </script>
+<script src="/utils/fade.js"></script>
 
 </body>
 </html>
