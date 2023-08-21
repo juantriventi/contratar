@@ -171,13 +171,27 @@ router.get('/jobs', async (req, res) => {
       let allOfertas = [];
       users.forEach(user => {
         const ofertasArray = JSON.parse(user.ofertas || '[]');
-        allOfertas = allOfertas.concat(ofertasArray);
+
+        // Filtrar las ofertas por categoría si se proporciona un parámetro de consulta
+        if (req.query.categoria) {
+          const categoriaFilter = req.query.categoria.toLowerCase();
+          const filteredOfertas = ofertasArray.filter(oferta =>
+            oferta.categoria.toLowerCase() === categoriaFilter
+          );
+          allOfertas = allOfertas.concat(filteredOfertas);
+        } else {
+          allOfertas = allOfertas.concat(ofertasArray);
+        }
       });
 
       // Mezclar el array de todas las ofertas en un orden aleatorio
       const shuffledOfertas = shuffleArray(allOfertas);
 
-      return res.render('jobs', { users, ofertasArray: shuffledOfertas, errorMessage: null });
+      return res.render('jobs', {
+        users,
+        ofertasArray: shuffledOfertas,
+        errorMessage: null,
+      });
     } catch (error) {
       console.error(error);
       return res.redirect('/jobs');
@@ -185,6 +199,7 @@ router.get('/jobs', async (req, res) => {
   }
   res.render('login');
 });
+
 
 
 router.post('/users/create-offer', async (req, res) => {
