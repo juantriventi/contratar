@@ -3,7 +3,6 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/user")
 
-// Ruta para mostrar el formulario de inicio de sesión
 router.get('/', async (req, res) => {
   try {
     let userCount = 0;
@@ -16,7 +15,7 @@ router.get('/', async (req, res) => {
 
       // Contar el número total de ofertas en todos los usuarios
       users.forEach(user => {
-        const ofertasArray = JSON.parse(user.ofertas || '[]');
+        const ofertasArray = Array.isArray(user.ofertas) ? user.ofertas : [];
         offerCount += ofertasArray.length;
       });
     }
@@ -27,6 +26,7 @@ router.get('/', async (req, res) => {
     res.render('error', { message: 'Error al obtener la lista de usuarios.' });
   }
 });
+
 
 
 
@@ -170,7 +170,7 @@ router.get('/jobs', async (req, res) => {
       // Crear un array de todas las ofertas de todos los usuarios
       let allOfertas = [];
       users.forEach(user => {
-        const ofertasArray = JSON.parse(user.ofertas || '[]');
+        const ofertasArray = user.ofertas || [];
 
         // Filtrar las ofertas por categoría si se proporciona un parámetro de consulta
         if (req.query.categoria) {
@@ -201,7 +201,6 @@ router.get('/jobs', async (req, res) => {
 });
 
 
-
 router.post('/users/create-offer', async (req, res) => {
   try {
     const { categoria, precio, descripcion, oferta } = req.body;
@@ -220,7 +219,7 @@ router.post('/users/create-offer', async (req, res) => {
     }
 
     // Agregar la nueva oferta al array con categoría, precio y descripción
-    ofertasArray.push({ categoria, precio, descripcion, oferta });
+    ofertasArray.push({ categoria, precio, descripcion, oferta, userId: user._id });
 
     // Convertir el array de ofertas de nuevo a una cadena JSON
     user.ofertas = JSON.stringify(ofertasArray);
@@ -234,6 +233,38 @@ router.post('/users/create-offer', async (req, res) => {
     res.render('jobs', { user: req.user, errorMessage: 'Error! Solo puedes tener 5 ofertas activas.' });
   }
 });
+
+
+router.post('/users/delete-offer', async (req, res) => {
+  try {
+    const { offerId } = req.body;
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.redirect('/jobs');
+    }
+
+    if (user.ofertas && Array.isArray(user.ofertas)) {
+      // Parsear las ofertas almacenadas como JSON en un array de objetos
+      const ofertasArray = user.ofertas.map(oferta => JSON.parse(oferta));
+
+      // Filtrar y eliminar la oferta con el offerId
+      const updatedOfertasArray = ofertasArray.filter(oferta => oferta._id !== offerId);
+
+      // Convertir el array de objetos de ofertas de nuevo a JSON
+      user.ofertas = updatedOfertasArray.map(oferta => JSON.stringify(oferta));
+
+      await user.save();
+    }
+
+    res.redirect('/jobs');
+  } catch (error) {
+    console.error(error);
+    res.render('error', { message: 'Error al eliminar la oferta.' });
+  }
+});
+
+
 
 
 

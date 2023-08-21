@@ -84,29 +84,26 @@
   
     <h2 class="text-center text-2xl font-semibold mt-20">Ofertas existentes</h2>
     <ul class="px-4 md:px-10 mt-5 py-2">
-      <% ofertasArray.forEach(oferta => { %>
-        <li class="bg-gray-200 rounded-lg m-2">
-          <div class="p-4 flex justify-between items-center cursor-pointer ">
-            <div class="flex items-center">
-              <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-20 h-20 object-cover mr-2">
-              <div class="ml-2">
-                <p><%= oferta.categoria %></p>
-                <p>$<%= oferta.precio %> total</p>
-                <p><%= oferta.descripcion %></p>
+      <% if (ofertasArray && ofertasArray.length > 0) { %>
+        <% ofertasArray.forEach(oferta => { %>
+          <li class="bg-gray-200 rounded-lg m-2">
+            <div class="p-4 flex justify-between items-center cursor-pointer">
+              <div class="flex items-center">
+                <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-20 h-20 object-cover mr-2">
+                <div class="ml-2">
+                  <p><%= oferta.categoria %></p>
+                  <p>$<%= oferta.precio %> total</p>
+                  <p><%= oferta.descripcion %></p>
+                </div>
               </div>
-            </div>
               <button class="bg-blue-500 text-white rounded-lg px-6 p-2">Aplicar</button>
-          </div>
-        </li>
-      <% }); %>
-    </ul>
-    
-    
-
-      <!-- Mostrar mensaje de error si existe -->
-      <% if (errorMessage) { %>
-        <p class="text-red-500"><%= errorMessage %></p>
+            </div>
+          </li>
+        <% }); %>
+      <% } else { %>
+        <p>No hay ofertas disponibles.</p>
       <% } %>
+    </ul>    
   <% } else { %>
     <!-- Si no está logueado -->
     <div class="flex items-center justify-center h-screen">
@@ -132,7 +129,7 @@
       // Agrega un evento de clic al botón para alternar la visibilidad del formulario de filtro
   toggleFilterButton.addEventListener('click', () => {
     filterForm.classList.toggle('hidden'); // Alterna la clase 'hidden' para mostrar u ocultar el formulario
-    toggleFilterButton.textContent = filterForm.classList.contains('hidden') ? 'Filtrar' : 'Cancelar';
+    toggleFilterButton.textContent = filterForm.classList.contains('hidden') ? 'Filtrar ofertas' : 'Cancelar';
   });
   </script>
   
