@@ -39,11 +39,11 @@
       </svg>
     </a>
     </div>
-    <h1 class="text-2xl font-bold mb-4">Tu perfil</h1>
+    <h1 class="text-2xl font-bold mb-4 text-center">Tu perfil</h1>
     <ul>
       <li class="flex items-center flex-col">
-        <img src="<%= user.profileImage %>" alt="" class="rounded-full w-16 h-16 object-cover">
-        <h5 class="font-semibold"><%= user.username %></h5>
+        <img src="<%= user.profileImage %>" alt="" class="rounded-full w-20 h-20 object-cover">
+        <h5 class="font-semibold mt-2"><%= user.fullName %></h5>
       </li>
     </ul>
       <!-- Contenedor para el formulario y el botón de carga -->
@@ -51,7 +51,7 @@
     <form action="/update-profile-image" method="POST" class="mt-4">
       <label for="profileImage">Url de imagen:</label>
       <input type="url" name="profileImage" id="profileImage" class="block w-full px-4 py-2 border rounded" placeholder="Enter image URL">
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full mt-2 text-center">Subir imagen</button>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2 text-center">Subir imagen</button>
     </form>
   </div>
   <h2 class="text-lg font-semibold mt-4 mb-4">Descripción:</h2>
@@ -62,13 +62,12 @@
     <form action="/update-profile-description" method="POST" class="mt-4">
       <label for="description">Descripción:</label>
       <textarea name="description" id="description" class="block w-full px-4 py-2 border rounded" placeholder="Escribe tu descripción aquí" maxlength="150"></textarea>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full mt-2 text-center">Actualizar Descripción</button>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2 text-center">Actualizar Descripción</button>
     </form>
   </div>
   <div class="flex text-center items-center justify-center p-2">
-      <a href="/" class="text-blue-500 hover:underline mx-2">Inicio</a>
       <!-- Botón para editar la descripción -->
-      <a href="#" class="text-blue-500 hover:underline mx-2" id="editDescriptionLink">Editar Descripción</a>
+      <a href="#" class="text-blue-500 hover:underline mx-2" id="editDescriptionLink">Editar descripción</a>
 </div>
 
 
