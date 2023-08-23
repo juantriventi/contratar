@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="/css/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body class="bg-gray-100">
+<body>
   <div class="bg-white p-4 shadow-md">
     <div class="container mx-auto">
       <div class="flex justify-between items-center">
@@ -30,23 +30,24 @@
   </div>
     <% if (user) { %>
       <div class="container sm:px-20 p-2 mx-auto">
-        <h1 class="text-4xl font-semibold mt-4 mb-2 text-center">Encontra tu candidato ideal</h1>
-        <h2 class="text-lg font-semibold mt-2 mb-2">Filtrar por rubro:</h2>
-      <div class="mt-2 mb-4">
-        <select id="profession-select" class="bg-gray-100 block w-full p-2 border rounded-md">
-          <option value="all">Mostrar todos</option>
-          <option value="Tecnologia">Tecnologia</option>
-          <option value="Gastronomia">Gastronomia</option>
-          <option value="Abogacia">Abogacia</option>
-          <option value="Indumentaria">Indumentaria</option>
-          <option value="Economia">Economia</option>
-          <option value="Arquitectura">Arquitectura</option>
-          <option value="Diseño">Diseño</option>
-          <option value="Constructores">Constructores</option>
-          <option value="Redes sociales">Redes sociales</option>
-        </select>
+        <button id="filter-button" class="bg-blue-500 text-white rounded-lg right-10 top-20 p-3 absolute" style="z-index: 2;">Ver filtros</button>
+        <div class="mt-2 mb-4">
+          <select id="profession-select" class="py-2 mt-20 p-3 border rounded-md left-10 top-1 p-3 absolute" style="display: none; width: 55%;">
+            <option value="all">Mostrar todos</option>
+            <option value="Tecnologia">Tecnologia</option>
+            <option value="Gastronomia">Gastronomia</option>
+            <option value="Abogacia">Abogacia</option>
+            <option value="Indumentaria">Indumentaria</option>
+            <option value="Economia">Economia</option>
+            <option value="Arquitectura">Arquitectura</option>
+            <option value="Diseño">Diseño</option>
+            <option value="Constructores">Constructores</option>
+            <option value="Redes sociales">Redes sociales</option>
+          </select>
+        </div>
       </div>
-      <div class="mt-4 md:flex md:flex-col lg:grid lg:grid-cols-2 gap-2">
+      <h1 id="profession-title" class="text-4xl font-semibold mb-2 text-center" style="margin-top: 32px;">Encontra tu candidato</h1>
+      <div class="mt-4 md:flex md:flex-col lg:grid lg:grid-cols-2 gap-2 px-5">
         <% users.forEach((user, index) => { %>
           <div class="bg-gray-200 rounded-lg shadow-md user-card mt-2">
             <div class="p-4 flex items-center cursor-pointer">
@@ -83,7 +84,8 @@
     <% } %>
   </div> 
   
-  <script src="/utils/expand.js"></script>
+<script src="/utils/expand.js"></script>
 <script src="/utils/filters.js"></script>
+
 </body>
 </html>

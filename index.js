@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('./models/user'); // Aquí importa el modelo
-const authRoutes = require('./routes/auth'); // Ajusta la ruta de importación
+const User = require('./models/user'); 
+const authRoutes = require('./routes/auth');
 
 const app = express();
 
@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 });
 
 // Configuración de las rutas
-app.use('/', authRoutes); // Ajusta las rutas según tu estructura
+app.use('/', authRoutes);
 
 
 app.listen(3000, () => {

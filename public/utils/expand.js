@@ -1,3 +1,5 @@
+
+/*Expando usuarios*/
 document.addEventListener("DOMContentLoaded", function () {
   const cards = document.querySelectorAll(".user-card");
   cards.forEach((card) => {
