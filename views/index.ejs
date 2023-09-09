@@ -7,27 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="bg-gray-100">
-  <div class="bg-white p-4 shadow-md">
-    <div class="container mx-auto">
-      <div class="flex justify-between items-center">
-        <div class="flex">
-          <h1 class="font-bold mt-1">Contratar</h1>
-          <img src="/images/argentina.png" alt="bandera" class="w-5 h-6 ml-1 mt-1">
-        </div>
-        <div class="flex items-center">
-          <a href="/" class="hover:underline mr-4">
-            Inicio
-          </a>
-          <a href="/profile" class="hover:underline mr-4">
-            Perfil
-          </a>
-          <a href="/logout" class="mr-2 lg:mr-4">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- NavBar -->
+  <%- include('partials/navbar') %>
 
   <% if (user) { %>
     <div class="flex items-center justify-center">
@@ -77,14 +58,56 @@
     </div>
   </div>
   <% } else { %>
-    <div class="flex items-center justify-center h-screen">
-      <p class="text-center">
-        No estás logueado. Por favor <a href="/login" class="text-blue-500 hover:underline">inicia sesión</a>.
-      </p>
+    <div class="relative">
+      <h1 class="text-center mt-10 text-3xl font-sans tracking-wide">¡Bienvenido a Contratar!</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center justify-center px-10 mt-10">
+        <!-- Contenido 1 -->
+        <div class="text-center md:text-center py-5">
+          <img src="images/undraw_hire_re_gn5j.svg" alt="Ilustración 1" style="width: 400px; justify-content: center; display: flex; margin: auto;">
+          <h2 class="text-3xl mb-4 mt-2 font-mono">Encontra el candidato ideal</h2>
+        </div>
+    
+        <!-- Contenido 2 (Duplicado) -->
+        <div class="text-center md:text-center">
+          <img src="images/undraw_happy_news_re_tsbd.svg" alt="Ilustración 2" style="width: 160px; justify-content: center; display: flex; margin: auto;">
+          <h2 class="text-3xl mb-10 mt-2 font-mono">Contacta con empleadores</h2>
+        </div>
+      </div>
+      <section class="curved flex items-center justify-center">
+        <h3 class="text-1x2 font-mono text-white text-center">'El éxito no está en vencer siempre sino en no desanimarse nunca' -Napoleón Bonaparte.</h3>
+      </section>
+      <div class="mt-10 px-20">
+        <section>
+          <h1 class="text-3xl  mt-10 text-center font-mono font-semibold">¿Quienes somos?</h1>
+          <p class="text-center mt-4">Llevamos 3 años revolucionando la forma en que las empresas y profesionales se encuentran en el mundo tech.</p>
+      </section>
+  
+      <section>
+          <h2 class="text-xl mt-6 ml-4 font-mono text-center">¿Por qué somos especiales?</h2>
+          <ul class=" list-inside mt-2 ml-4">
+              <li>-Tecnología Avanzada: Hemos adoptado las últimas tendencias tecnológicas para brindarte una experiencia sin igual en la búsqueda y contratación de talento. Desde algoritmos de coincidencia hasta análisis de datos, estamos a la vanguardia.</li>
+              <li>-Comunidad Activa: Nuestra comunidad de profesionales crece constantemente. Con miles de empresas y candidatos, somos el lugar perfecto para conectarte con el talento que necesitas o encontrar tu próximo desafío profesional.</li>
+              <li>-Apoyo Personalizado: Sabemos que cada búsqueda de empleo o candidato es única. Nuestro equipo de expertos está aquí para brindarte asesoramiento personalizado y apoyo en cada paso del proceso.</li>
+              <li>-Compromiso con la Diversidad: En Contratar, creemos en la diversidad e inclusión. Trabajamos incansablemente para crear un entorno donde todos los talentos puedan brillar.</li>
+              <li>-Historias de Éxito: Hemos contribuido a innumerables historias de éxito. Desde startups emergentes hasta gigantes de la tecnología, hemos sido el motor detrás de grandes logros.</li>
+          </ul>
+      </section>
+  
+      <section>
+          <p class="text-center mt-6 font-bold font-mono">Únete a la comunidad de Contratar y descubre lo que podemos hacer por ti. Ya sea que estés buscando tu próximo desafío laboral o deseas encontrar al candidato perfecto para tu empresa, estamos aquí para hacerlo posible.</p>
+          <p class="text-center font-bold font-mono mt-3">¡Juntos, construyamos un futuro brillante!</p>
+      </section>
+  
+      <footer class="text-center mt-2 font-bold mb-5">
+          <p>#Contratar✨</p>
+      </footer>
+        </div>
+      
     </div>
+    
+    
   <% } %>
 
 <script src="/utils/fade.js"></script>
-
 </body>
 </html>

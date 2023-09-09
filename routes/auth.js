@@ -7,6 +7,9 @@ router.get('/', async (req, res) => {
   try {
     let userCount = 0;
     let offerCount = 0; // Inicializar el contador de ofertas
+
+    // Obtener el estado de autenticación del usuario
+    const isAuthenticated = req.isAuthenticated();
     if (req.isAuthenticated()) {
       const users = await User.find({});
       
@@ -20,7 +23,7 @@ router.get('/', async (req, res) => {
       });
     }
     
-    res.render('index', { userCount, offerCount }); // Pasar las variables a la vista
+    res.render('index', { userCount, offerCount, isAuthenticated }); // Pasar las variables a la vista
   } catch (error) {
     console.error(error);
     res.render('error', { message: 'Error al obtener la lista de usuarios.' });
@@ -100,9 +103,13 @@ router.post('/signup', async (req, res) => {
 
 // Ruta para mostrar el perfil del usuario
 router.get('/profile', (req, res) => {
+
+  // Obtener el estado de autenticación del usuario
+  const isAuthenticated = req.isAuthenticated();
+
   if (req.isAuthenticated()) {
     console.log(req.user);
-  res.render('profile', { user: req.user }); // Pasa el usuario autenticado a la vista
+  res.render('profile', { user: req.user , isAuthenticated }); // Pasa el usuario autenticado a la vista
   } else {
     res.render("login")
   }
@@ -139,11 +146,14 @@ router.post('/update-profile-description', async (req, res) => {
 router.get('/users', async (req, res) => {
   try {
     const users = await User.find({});
+
+     // Obtener el estado de autenticación del usuario
+     const isAuthenticated = req.isAuthenticated();
     
     // Filter out recruiters from the users list
     const filteredUsers = users.filter(user => user.profession !== 'Reclutador');
     
-    res.render('users', { users: filteredUsers }); // Render the 'users' view with the filtered user list
+    res.render('users', { users: filteredUsers , isAuthenticated}); // Render the 'users' view with the filtered user list
   } catch (error) {
     console.error(error);
     res.render('error', { message: 'Error al obtener la lista de usuarios.' });
@@ -163,6 +173,10 @@ function shuffleArray(array) {
 
 // Ruta para mostrar la vista de trabajos (jobs)
 router.get('/jobs', async (req, res) => {
+
+   // Obtener el estado de autenticación del usuario
+   const isAuthenticated = req.isAuthenticated();
+
   if (req.isAuthenticated()) {
     try {
       const users = await User.find().lean();
@@ -190,6 +204,7 @@ router.get('/jobs', async (req, res) => {
         users,
         ofertasArray: shuffledOfertas,
         errorMessage: null,
+        isAuthenticated
       });
     } catch (error) {
       console.error(error);

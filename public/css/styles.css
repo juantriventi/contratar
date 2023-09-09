@@ -22,6 +22,26 @@
   .card{
     max-height: 300px;
   }
+
+  /*LOGO*/
+  .logo img{
+    width: 80px;
+    height: 50px;
+    margin-left: 50px;
+  }
+
+  /*SEPARADOR*/
+
+  .curved {
+    position: relative;
+    background: #75AADB;
+    height: 20vh;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+  }
+
+
+
   @media (max-width: 768px) {
     .card{
       max-height: 450px;
