@@ -1,5 +1,5 @@
 
-<div class="bg-white p-4 shadow-md mb-0">
+<div class="bg-white p-4 shadow-md sm:shadow-md mb-0">
     <div class="container mx-auto">
       <div class="flex justify-between items-center">
         <div class="logo ml-5">
@@ -25,10 +25,8 @@
               <!-- Dropdown oculto -->
               <div class="absolute hidden mt-10 mr-10 w-35 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
                 <!-- Contenido del dropdown -->
-                <!-- Puedes agregar elementos como enlaces o acciones aquí -->
                 <a href="/profile" class="block px-4 py-2 hover:bg-gray-100">Perfil</a>
-                <a href="/logout" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
-                <!-- Agrega más opciones según tus necesidades -->
+                <a href="/logout" class="block px-4 py-2 hover:bg-gray-100">Logout</a> 
               </div>
             </li>
             
@@ -49,8 +47,8 @@
               });
             </script>
           <% } else { %>
-            <div class="flex items-center mr-10">
-              <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <div class="flex items-center mr-5">
+              <div class="flex-1 justify-end mt-2">
                 <a href="/login" class="text-sm font-semibold leading-6 text-gray-900">Iniciar sesion <span aria-hidden="true">&rarr;</span></a>
               </div>
              </div>
