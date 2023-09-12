@@ -15,7 +15,7 @@
 
     <% if (user) { %>
       <div class="container sm:px-20 p-2 mx-auto">
-        <button id="filter-button" class="bg-blue-500 text-white rounded-lg right-10 top-25 p-3 absolute" style="z-index: 2; margin-top: 5px;">Ver filtros</button>
+        <button id="filter-button" class="bg-indigo-500 text-white rounded-lg right-10 top-25 p-3 absolute" style="z-index: 2; margin-top: 5px;">Ver filtros</button>
         <div class="mt-2 mb-4">
           <select id="profession-select" class="py-2 mt-20 p-3 border rounded-md left-10 top-5 p-3 absolute" style="display: none; width: 55%;">
             <option value="all">Mostrar todos</option>
@@ -36,7 +36,7 @@
         <% users.forEach((user, index) => { %>
           <div class="bg-gray-200 rounded-lg shadow-md user-card mt-2">
             <div class="p-4 flex items-center cursor-pointer">
-              <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-20 h-20 object-cover mr-2">
+              <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-20 h-20 object-cover mr-2 ring ring-indigo-500 ring-offset-base-100 ring-offset-2">
               <div class="flex-1">
                 <div class="flex items-center">
                   <span class="font-semibold mr-2"><%= user.fullName %></span>

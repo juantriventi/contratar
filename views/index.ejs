@@ -12,97 +12,94 @@
 
   <% if (user) { %>
     <div class="flex items-center justify-center">
-      <div class="text-center mt-10">
+      <div class="text-center mt-5">
         <p class="text-4xl font-semibold">
           Encontrá el
-          <span id="word-to-change" class="text-blue-600 word-transition ml-2 mr-1"></span>
+          <span id="word-to-change" class="text-indigo-500 word-transition ml-2 mr-1"></span>
           que nececitas
         </p>
       </div>
     </div>
-    <div class="flex items-center justify-center mt-5">
-      <div class="w-full 2xl:w-3/4 px-8 md:px-32 lg:px-16 2xl:px-0">
+    <div class="flex items-center justify-center mt-5 mb-4">
+      <div class="2xl:w-3/4 px-8 md:px-32 lg:px-16 2xl:px-0">
         <div class="w-full grid grid-cols-1 xl:grid-cols-2 gap-8">
-          <a href="/jobs" class="card">
-            <div class="bg-white shadow-2xl rounded-lg py-4">
-              <img src="/images/pexels-andrea-piacquadio-927022.jpg" alt="Ofertas de trabajo"  class="foto-inicio w-full h-64 object-cover rounded-t-lg">
-              <p class="text-xl text-center font-bold text-blue-600 mt-5">Ver ofertas de trabajo</p>
-              <p class="text-center py-2">
-                <span class="text-4xl font-bold text-gray-700">
+        <a href="/jobs">
+          <div class="card rounded overflow-hidden shadow-lg mx-auto">
+            <img src="/images/empleados.jpg" alt="Sunset in the mountains" class="foto-inicio-1 w-full h-64 object-cover rounded-t-lg">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2 text-center">Ver ofertas</div>
+              <p class="text-gray-700 text-base text-center">
+                Busca o publica un empleo.
+              </p>
+            </div>
+            <div class="px-6 mb-2">
+              <p class="text-center">
+                <span class="text-4xl font-bold text-indigo-500">
                   <%= offerCount %>
                 </span>
                 <span class="text-xs uppercase text-gray-500">
-                   <span>ofertas activas</span>
+                  <span>ofertas activas</span>
                 </span>
               </p>
-              <!-- Content of Basic plan -->
             </div>
-          </a>
-          <a href="/users" class="card  pb-3">
-            <div class="bg-white shadow-2xl rounded-lg py-4">
-              <img src="/images/pexels-sora-shimazaki-5673502.jpg" alt="Buscar empleados" class="foto-inicio w-full h-64 object-cover rounded-t-lg">
-              <p class="text-xl text-center font-bold text-blue-600 mt-5">Buscar empleados</p>
-              <p class="text-center py-2">
-                <span class="text-4xl font-bold text-gray-700">
+          </div>
+        </a>
+    
+        <a href="/users">
+          <div class="card rounded overflow-hidden shadow-lg mx-auto">
+            <img src="/images/candidatos.jpg" alt="Sunset in the mountains" class="foto-inicio-2 w-full h-64 object-cover rounded-t-lg">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2 text-center">Ver candidatos</div>
+              <p class="text-gray-700 text-base text-center">
+                Encontra a tu candidato ideal.
+              </p>
+            </div>
+            <div class="px-6 mb-2">
+              <p class="text-center">
+                <span class="text-4xl font-bold text-indigo-500">
                   <%= userCount %>
                 </span>
                 <span class="text-xs uppercase text-gray-500">
-                   <span>candidatos</span>
+                  <span>candidatos</span>
                 </span>
               </p>
-              <!-- Content of Premium plan -->
             </div>
-          </a>
+          </div>
+        </a>
         </div>
       </div>
     </div>
-  </div>
-  <% } else { %>
-    <div class="relative">
-      <h1 class="text-center mt-10 text-3xl font-sans tracking-wide">¡Bienvenido a Contratar!</h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center justify-center px-10 mt-10">
-        <!-- Contenido 1 -->
-        <div class="text-center md:text-center py-5">
-          <img src="images/undraw_hire_re_gn5j.svg" alt="Ilustración 1" style="width: 400px; justify-content: center; display: flex; margin: auto;">
-          <h2 class="text-3xl mb-4 mt-2 font-mono">Encontra el candidato ideal</h2>
-        </div>
     
-        <!-- Contenido 2 (Duplicado) -->
-        <div class="text-center md:text-center">
-          <img src="images/undraw_happy_news_re_tsbd.svg" alt="Ilustración 2" style="width: 160px; justify-content: center; display: flex; margin: auto;">
-          <h2 class="text-3xl mb-10 mt-2 font-mono">Contacta con empleadores</h2>
+</div>
+
+
+  <% } else { %>
+
+      
+    <div class="bg-white">
+      <div class="relative px-6 lg:px-8">
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+          <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        </div>
+        <div class="mx-auto max-w-2xl sm:py-20">
+          <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+            <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-indigo-500 hover:ring-gray-900/20">
+              Vayamos por este camino juntos. <a href="/signup" class="font-semibold text-indigo-500"><span class="absolute inset-0" aria-hidden="true"></span>Ver más <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+          <div class="text-center">
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Consegui propuestas de trabajo con nosotros</h1>
+            <p class="mt-6 text-lg leading-8 text-gray-600">Somos una Tech Startup sin fines de lucro que se dedica a juntar personas con futuras ofertas laborales.</p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+              <a href="/login" class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:bg-indigo-600">Ingresar</a>
+              <a href="/signup" class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:bg-indigo-600">Crear cuenta</a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+          <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
         </div>
       </div>
-      <section class="curved flex items-center justify-center">
-        <h3 class="text-1x2 font-mono text-white text-center">'El éxito no está en vencer siempre sino en no desanimarse nunca' -Napoleón Bonaparte.</h3>
-      </section>
-      <div class="mt-10 px-20">
-        <section>
-          <h1 class="text-3xl  mt-10 text-center font-mono font-semibold">¿Quienes somos?</h1>
-          <p class="text-center mt-4">Llevamos 3 años revolucionando la forma en que las empresas y profesionales se encuentran en el mundo tech.</p>
-      </section>
-  
-      <section>
-          <h2 class="text-xl mt-6 ml-4 font-mono text-center">¿Por qué somos especiales?</h2>
-          <ul class=" list-inside mt-2 ml-4">
-              <li>-Tecnología Avanzada: Hemos adoptado las últimas tendencias tecnológicas para brindarte una experiencia sin igual en la búsqueda y contratación de talento. Desde algoritmos de coincidencia hasta análisis de datos, estamos a la vanguardia.</li>
-              <li>-Comunidad Activa: Nuestra comunidad de profesionales crece constantemente. Con miles de empresas y candidatos, somos el lugar perfecto para conectarte con el talento que necesitas o encontrar tu próximo desafío profesional.</li>
-              <li>-Apoyo Personalizado: Sabemos que cada búsqueda de empleo o candidato es única. Nuestro equipo de expertos está aquí para brindarte asesoramiento personalizado y apoyo en cada paso del proceso.</li>
-              <li>-Compromiso con la Diversidad: En Contratar, creemos en la diversidad e inclusión. Trabajamos incansablemente para crear un entorno donde todos los talentos puedan brillar.</li>
-              <li>-Historias de Éxito: Hemos contribuido a innumerables historias de éxito. Desde startups emergentes hasta gigantes de la tecnología, hemos sido el motor detrás de grandes logros.</li>
-          </ul>
-      </section>
-  
-      <section>
-          <p class="text-center mt-6 font-bold font-mono">Únete a la comunidad de Contratar y descubre lo que podemos hacer por ti. Ya sea que estés buscando tu próximo desafío laboral o deseas encontrar al candidato perfecto para tu empresa, estamos aquí para hacerlo posible.</p>
-          <p class="text-center font-bold font-mono mt-3">¡Juntos, construyamos un futuro brillante!</p>
-      </section>
-  
-      <footer class="text-center mt-2 font-bold mb-5">
-          <p>#Contratar✨</p>
-      </footer>
-        </div>
-      
     </div>
     
     

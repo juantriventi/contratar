@@ -14,9 +14,15 @@
 
 
   /*Index*/
-
-.foto-inicio{
-    margin-top: -18px;
+.card{
+  min-width: 500px;
+  min-height: 400px;
+}
+  .foto-inicio-1{
+    min-height: 200px;
+  }
+  .foto-inicio-2{
+    min-height: 200px;
   }
 
   .card{
@@ -42,10 +48,8 @@
 
 
 
-  @media (max-width: 768px) {
-    .card{
-      max-height: 450px;
-    }
+  @media (min-width: 768px) {
+
   }
   .card:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);

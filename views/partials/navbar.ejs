@@ -2,30 +2,57 @@
 <div class="bg-white p-4 shadow-md mb-0">
     <div class="container mx-auto">
       <div class="flex justify-between items-center">
-        <div class="logo">
-          <a href="/">
-          <img src="images/logo.png" alt="logo">
+        <div class="logo ml-5">
+          <a href="/" class="font-semibold leading-6 text-gray-900">
+          Contratar
         </a>
         </div>
         <% if (isAuthenticated) { %>
-        <div class="flex items-center mr-10">
-            <a href="/" class="hover:underline mr-4">
+        <div class="flex items-center">
+            <a href="/" class="hover:underline ml-4">
               Inicio
             </a>
-            <a href="/profile" class="hover:underline mr-4">
-              Perfil
+            <a href="/jobs" class="hover:underline ml-4">
+              Trabajos
             </a>
-          <a href="/logout" class="mr-2 lg:mr-4">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
-          </a>
+            <a href="/users" class="hover:underline ml-4">
+              Usuarios
+            </a>
+            <li class="flex items-center flex-col ml-5 mr-3 relative">
+              <!-- Imagen de perfil -->
+              <img src="<%= user.profileImage %>" alt="" class="rounded-full w-8 h-8 object-cover cursor-pointer">
+        
+              <!-- Dropdown oculto -->
+              <div class="absolute hidden mt-10 mr-10 w-35 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                <!-- Contenido del dropdown -->
+                <!-- Puedes agregar elementos como enlaces o acciones aquí -->
+                <a href="/profile" class="block px-4 py-2 hover:bg-gray-100">Perfil</a>
+                <a href="/logout" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+                <!-- Agrega más opciones según tus necesidades -->
+              </div>
+            </li>
+            
+            <!-- JavaScript para mostrar/ocultar el dropdown -->
+            <script>
+              const dropdown = document.querySelector('.relative');
+              const dropdownContent = dropdown.querySelector('.absolute');
+            
+              dropdown.addEventListener('click', () => {
+                dropdownContent.classList.toggle('hidden');
+              });
+            
+              // Cerrar el dropdown al hacer clic fuera de él
+              document.addEventListener('click', (event) => {
+                if (!dropdown.contains(event.target)) {
+                  dropdownContent.classList.add('hidden');
+                }
+              });
+            </script>
           <% } else { %>
-            <div class="flex items-center mr-5">
-            <a href="/login" class="hover:underline mr-4">
-                Ingresar
-            </a>
-            <a href="/signup" class="hover:underline mr-4">
-                Crear cuenta
-            </a>
+            <div class="flex items-center mr-10">
+              <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                <a href="/login" class="text-sm font-semibold leading-6 text-gray-900">Iniciar Sesion <span aria-hidden="true">&rarr;</span></a>
+              </div>
              </div>
             <% } %>
         </div>
