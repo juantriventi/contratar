@@ -14,15 +14,14 @@
 
 
   /*Index*/
-.card{
-  min-width: 500px;
-  min-height: 400px;
-}
+
   .foto-inicio-1{
     min-height: 200px;
+    min-width: 100%;
   }
   .foto-inicio-2{
     min-height: 200px;
+    min-width: 100%;
   }
 
   .card{

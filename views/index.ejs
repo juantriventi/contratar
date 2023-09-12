@@ -12,7 +12,7 @@
 
   <% if (user) { %>
     <div class="flex items-center justify-center">
-      <div class="text-center mt-5">
+      <div class="text-center mt-10">
         <p class="text-4xl font-semibold">
           Encontrá el
           <span id="word-to-change" class="text-indigo-500 word-transition ml-2 mr-1"></span>
@@ -20,19 +20,16 @@
         </p>
       </div>
     </div>
-    <div class="flex items-center justify-center mt-5 mb-4">
+    <div class="flex items-center justify-center mt-5 mb-5 sm:mt-10">
       <div class="2xl:w-3/4 px-8 md:px-32 lg:px-16 2xl:px-0">
-        <div class="w-full grid grid-cols-1 xl:grid-cols-2 gap-8">
-        <a href="/jobs">
-          <div class="card rounded overflow-hidden shadow-lg mx-auto">
-            <img src="/images/empleados.jpg" alt="Sunset in the mountains" class="foto-inicio-1 w-full h-64 object-cover rounded-t-lg">
+        <div class="w-full grid grid-cols-1 xl:grid-cols-2 gap-8 ">
+          <a href="/jobs" class="col-md-6 col-lg-6 col-xl-6">
+            <div class="card rounded overflow-hidden shadow-lg mx-auto">
+            <img src="/images/empleados.jpg" alt="Sunset in the mountains" class="foto-inicio-1 h-32 object-cover rounded-t-lg">
             <div class="px-6 py-4">
               <div class="font-bold text-xl mb-2 text-center">Ver ofertas</div>
-              <p class="text-gray-700 text-base text-center">
-                Busca o publica un empleo.
-              </p>
-            </div>
-            <div class="px-6 mb-2">
+            
+            <div class="px-6">
               <p class="text-center">
                 <span class="text-4xl font-bold text-indigo-500">
                   <%= offerCount %>
@@ -43,18 +40,15 @@
               </p>
             </div>
           </div>
+          </div>
         </a>
     
-        <a href="/users">
+        <a href="/users" class="col-md-6 col-lg-6 col-xl-6">
           <div class="card rounded overflow-hidden shadow-lg mx-auto">
-            <img src="/images/candidatos.jpg" alt="Sunset in the mountains" class="foto-inicio-2 w-full h-64 object-cover rounded-t-lg">
+            <img src="/images/candidatos.jpg" alt="Sunset in the mountains" class="foto-inicio-2 h-32 object-cover rounded-t-lg">
             <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2 text-center">Ver candidatos</div>
-              <p class="text-gray-700 text-base text-center">
-                Encontra a tu candidato ideal.
-              </p>
-            </div>
-            <div class="px-6 mb-2">
+              <div class="font-bold text-xl text-center">Ver candidatos</div>
+            <div class="px-6 mb-4">
               <p class="text-center">
                 <span class="text-4xl font-bold text-indigo-500">
                   <%= userCount %>
@@ -64,6 +58,7 @@
                 </span>
               </p>
             </div>
+          </div>
           </div>
         </a>
         </div>
