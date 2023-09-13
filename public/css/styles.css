@@ -31,7 +31,7 @@
 
 /*HERO NO LOGUEADO*/
   #image-hero{
-    height: 79vh;
+    height: 81vh;
   }
 /*HERO EN CELULAR*/
   @media (max-width: 400px) {
