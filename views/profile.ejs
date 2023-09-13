@@ -2,17 +2,21 @@
 <html lang="es">
 <head>
   <title><%= user.fullName %> | Perfil</title>
-  <!-- Agrega el enlace a tu archivo CSS de Tailwind -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/AR.png" type="image/x-icon">
   <link rel="stylesheet" href="/css/styles.css">
+  <link
+  href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white ">
   
     <!-- NavBar -->
     <%- include('partials/navbar') %>
-
+    <div class="min-h-screen bg-primary-content pb-10 py-3">
   <div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
     <div class="bg-white p-4 mt-5 md:p-8 rounded-lg shadow-md w-full md:w-2/3 lg:w-1/2">
     <div class="text-center">
@@ -53,7 +57,7 @@
       <!-- Botón para editar la descripción -->
       <a href="#" class="text-blue-500 hover:underline mx-2" id="editDescriptionLink">Editar descripción</a>
 </div>
-
+</div>
 
 <script src="/utils/profileForms.js"></script>
 </body>

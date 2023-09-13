@@ -2,10 +2,15 @@
 <html lang="es">
 <head>
   <title>Usuarios</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="shortcut icon" href="images/AR.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link
+  href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
  
@@ -15,6 +20,7 @@
 
 
     <% if (user) { %>
+      <div class="min-h-screen bg-primary-content pb-10 py-3">
       <div class="container sm:px-20 p-2 mx-auto">
         <button id="filter-button" class="bg-indigo-500 text-white rounded-lg right-10 top-25 p-3 absolute" style="z-index: 2; margin-top: 5px;">Ver filtros</button>
         <div class="mt-2 mb-4">
@@ -37,7 +43,7 @@
         <% users.forEach((user, index) => { %>
           <div class="bg-gray-200 rounded-lg shadow-md user-card mt-2">
             <div class="p-4 flex items-center cursor-pointer">
-              <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-20 h-20 object-cover mr-2 ring ring-indigo-500 ring-offset-base-100 ring-offset-2">
+              <img src="<%= user.profileImage %>" alt="<%= user.username %>'s Profile" class="rounded-full w-20 h-20 object-cover mr-2">
               <div class="flex-1">
                 <div class="flex items-center">
                   <span class="font-semibold mr-2"><%= user.fullName %></span>
@@ -61,6 +67,7 @@
           </div>
         <% }); %>        
       </div>
+    </div>
     <% } else { %>
       <div class="flex items-center justify-center h-screen">
         <p class="text-center">

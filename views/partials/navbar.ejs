@@ -1,59 +1,55 @@
-
-<div class="bg-white p-4 shadow-md sm:shadow-md mb-0">
-    <div class="container mx-auto">
-      <div class="flex justify-between items-center">
-        <div class="logo ml-5">
-          <a href="/" class="font-semibold leading-6 text-gray-900">
-          Contratar
-        </a>
-        </div>
+<!--NavBar-->
         <% if (isAuthenticated) { %>
-        <div class="flex items-center">
-            <a href="/" class="hover:underline ml-4">
-              Inicio
-            </a>
-            <a href="/jobs" class="hover:underline ml-4">
-              Trabajos
-            </a>
-            <a href="/users" class="hover:underline ml-4">
-              Usuarios
-            </a>
-            <li class="flex items-center flex-col ml-5 mr-3 relative">
-              <!-- Imagen de perfil -->
-              <img src="<%= user.profileImage %>" alt="" class="rounded-full w-8 h-8 object-cover cursor-pointer">
-        
-              <!-- Dropdown oculto -->
-              <div class="absolute hidden mt-10 mr-10 w-35 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
-                <!-- Contenido del dropdown -->
-                <a href="/profile" class="block px-4 py-2 hover:bg-gray-100">Perfil</a>
-                <a href="/logout" class="block px-4 py-2 hover:bg-gray-100">Logout</a> 
+          <div class="navbar bg-base-100">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <label tabindex="0" class="btn btn-ghost btn-circle">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                </label>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                  <li><a href="/">Inicio</a></li>
+                  <li><a href="/jobs">Trabajos</a></li>
+                  <li><a href="/users">Usuarios</a></li>
+                  <li><a href="/profile">Perfil</a></li>
+                  <li><a href="/logout">Cerrar sesion</a></li>
+                </ul>
               </div>
-            </li>
-            
-            <!-- JavaScript para mostrar/ocultar el dropdown -->
-            <script>
-              const dropdown = document.querySelector('.relative');
-              const dropdownContent = dropdown.querySelector('.absolute');
-            
-              dropdown.addEventListener('click', () => {
-                dropdownContent.classList.toggle('hidden');
-              });
-            
-              // Cerrar el dropdown al hacer clic fuera de él
-              document.addEventListener('click', (event) => {
-                if (!dropdown.contains(event.target)) {
-                  dropdownContent.classList.add('hidden');
-                }
-              });
-            </script>
+            </div>
+            <div class="navbar-center">
+              <a class="btn btn-ghost normal-case text-xl">Contratar</a>
+            </div>
+          <div class="navbar-end mr-2">
+            <div class="avatar">
+              <div class="w-8 rounded-full">
+                
+                  <div class="w-8 ">
+                    <a href="/profile"><img src="<%=user.profileImage%>" /></a>
+                  </div>
+                </div> 
+              </div>   
+          </div>
+          </div>
           <% } else { %>
-            <div class="flex items-center mr-5">
-              <div class="flex-1 justify-end mt-2">
-                <a href="/login" class="text-sm font-semibold leading-6 text-gray-900">Iniciar sesion <span aria-hidden="true">&rarr;</span></a>
+            <div class="navbar bg-base-100">
+              <div class="navbar-start">
+                <div class="dropdown">
+                  <label tabindex="0" class="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                  </label>
+                  <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/login">Iniciar sesion</a></li>
+                    <li><a href="/signup">Crear cuenta</a></li>
+                  </ul>
+                </div>
               </div>
-             </div>
+              <div class="navbar-center">
+                <a class="btn btn-ghost normal-case text-xl">Contratar</a>
+              </div>
+              <div class="navbar-end mr-5">
+                <button class="btn btn-ghost btn-circle">
+                  <a href="/login" class="link link-hover">Iniciar sesion</a>
+                </button>
+              </div>
+            </div>
             <% } %>
-        </div>
-      </div>
-    </div>
-  </div>
