@@ -29,6 +29,24 @@
     max-height: 300px;
   }
 
+/*HERO NO LOGUEADO*/
+  #image-hero{
+    height: 79vh;
+  }
+/*HERO EN CELULAR*/
+  @media (max-width: 400px) {
+    #image-hero{
+      height: 84vh;
+    }
+  }
+/*HERO MAYOR A NOTEBOOK*/
+  @media (min-width: 1500px) {
+    #image-hero{
+      height: 87vh;
+    }
+  }
+
+
   /*LOGO*/
   .logo img{
     width: 80px;
@@ -46,11 +64,7 @@
     border-bottom-right-radius: 0%;
   }
 
-
-
-  @media (min-width: 768px) {
-
-  }
+  
   .card:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
@@ -109,9 +123,4 @@
     display: block;
   }
   
-  
-  
-  
-  
-/*Jobs*/
 
