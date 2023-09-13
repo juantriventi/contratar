@@ -245,7 +245,8 @@ router.post('/users/create-offer', async (req, res) => {
         profileImage: user.profileImage, // Imagen del usuario almacenada en la base de datos
         username: user.username,
         email: user.email
-      }
+      },
+      fechaCreacion: new Date()
     });
     // Convertir el array de ofertas de nuevo a una cadena JSON
     user.ofertas = ofertasArray;
