@@ -109,8 +109,7 @@ router.get('/profile', (req, res) => {
   const isAuthenticated = req.isAuthenticated();
 
   if (req.isAuthenticated()) {
-    console.log(req.user);
-  res.render('profile', { user: req.user , isAuthenticated }); // Pasa el usuario autenticado a la vista
+    res.render('profile', { user: req.user , isAuthenticated }); // Pasa el usuario autenticado a la vista
   } else {
     res.render("login")
   }

@@ -10,8 +10,6 @@
                   <li><a href="/">Inicio</a></li>
                   <li><a href="/jobs">Trabajos</a></li>
                   <li><a href="/users">Usuarios</a></li>
-                  <li><a href="/profile">Perfil</a></li>
-                  <li><a href="/logout">Cerrar sesion</a></li>
                 </ul>
               </div>
             </div>
@@ -19,14 +17,17 @@
               <a class="btn btn-ghost normal-case text-xl">Contratar</a>
             </div>
           <div class="navbar-end mr-2">
-            <div class="avatar">
-              <div class="w-8 rounded-full">
-                
-                  <div class="w-8 ">
-                    <a href="/profile"><img src="<%=user.profileImage%>" /></a>
-                  </div>
-                </div> 
-              </div>   
+            <div class="dropdown dropdown-end">
+              <label tabindex="0" class="btn btn-ghost btn-circle">
+                <div class="avatar">
+                  <img class="rounded rounded-full p-2" src="<%=user.profileImage%>" alt="">
+                </div>
+              </label>
+              <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a href="/profile">Perfil</a></li>
+                <li><a href="/logout">Cerrar sesion</a></li>
+              </ul>
+            </div>
           </div>
           </div>
           <% } else { %>
