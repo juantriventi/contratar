@@ -60,7 +60,7 @@ app.use('/', authRoutes);
 //Mercado pago
 app.use(bodyParser.json());
 
-mercadopago.configurations.setAccessToken('TEST-6869864857069449-042416-d523d3cc25c701939dfa1141194e2b64-490506466');
+mercadopago.configurations.setAccessToken('APP_USR-6869864857069449-042416-97c054571c7a9f1e271565fd14e7ea6f-490506466');
 
 // Configura la ruta para manejar la solicitud POST desde el formulario
 app.post('/generate-payment-preference', (req, res) => {
@@ -71,15 +71,15 @@ app.post('/generate-payment-preference', (req, res) => {
     items: [
       {
         title: 'Suscripción Premium',
-        unit_price: 100, // Monto en centavos (100 pesos)
+        unit_price: 10, // Monto en centavos (100 pesos)
         quantity: 1,
       },
     ],
     external_reference: userId.toString(), // Referencia externa (puede ser el ID de usuario)
     back_urls: {
-      success: 'https://tu-sitio.com/success', // URL de redirección en caso de éxito
-      failure: 'https://tu-sitio.com/failure', // URL de redirección en caso de fallo
-      pending: 'https://tu-sitio.com/pending', // URL de redirección en caso de pendiente
+      success: 'https://contratar.com.ar/success', // URL de redirección en caso de éxito
+      failure: 'https://contratar.com.ar/failure', // URL de redirección en caso de fallo
+      pending: 'https://contratar.com.ar/pending', // URL de redirección en caso de pendiente
     },
   };
 
@@ -97,6 +97,35 @@ app.post('/generate-payment-preference', (req, res) => {
       res.status(500).json({ error: 'Error al generar la preferencia de pago' });
     });
 });
+
+// Configura la ruta de éxito para manejar el resultado del pago
+app.get('/success', (req, res) => {
+  // Verifica el estado del pago utilizando la información proporcionada por Mercado Pago
+  const paymentStatus = req.query.status; // Obtén el estado del pago desde la URL (esto depende de cómo lo configures con Mercado Pago)
+
+  if (paymentStatus === 'approved') {
+    // Si el pago se ha aprobado, actualiza la propiedad premium a true en tu base de datos
+    const userId = req.query.external_reference; // Obtén el ID de usuario desde la URL
+
+    // Aquí deberías tener la lógica para actualizar la propiedad premium del usuario a true en tu base de datos
+    // Puedes utilizar tu ORM o librería de base de datos preferida para hacerlo
+    // Ejemplo con Mongoose (para MongoDB):
+    User.findByIdAndUpdate(userId, { premium: true }, (err, user) => {
+      if (err) {
+        console.error(err);
+        // Manejo de errores
+      } else {
+        // La propiedad premium del usuario ahora es true
+        // Puedes realizar cualquier otra acción necesaria después de la actualización
+        res.redirect('/premium-success'); // Redirige a una página de éxito de premium
+      }
+    });
+  } else {
+    // Maneja otros estados de pago según sea necesario
+    res.redirect('/payment-failure'); // Redirige a una página de fallo de pago
+  }
+});
+
 
 
 

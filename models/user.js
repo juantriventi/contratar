@@ -11,7 +11,10 @@ const userSchema = new mongoose.Schema({
   contact: String,
   email: String,
   description: String,
-  ofertas: {
+  premium: {
+    type: Boolean,
+    default: false,
+  },  ofertas: {
     type: Array,
     default: [],
   },
