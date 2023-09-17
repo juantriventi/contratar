@@ -60,7 +60,7 @@ app.use('/', authRoutes);
 //Mercado pago
 app.use(bodyParser.json());
 
-mercadopago.configurations.setAccessToken('APP_USR-6869864857069449-042416-97c054571c7a9f1e271565fd14e7ea6f-490506466');
+mercadopago.configurations.setAccessToken('TEST-6869864857069449-042416-d523d3cc25c701939dfa1141194e2b64-490506466');
 
 // Configura la ruta para manejar la solicitud POST desde el formulario
 app.post('/generate-payment-preference', (req, res) => {
@@ -75,11 +75,11 @@ app.post('/generate-payment-preference', (req, res) => {
         quantity: 1,
       },
     ],
-    external_reference: userId.toString(), // Referencia externa (puede ser el ID de usuario)
+    external_reference: userId,
     back_urls: {
-      success: 'https://contratar.com.ar/success', // URL de redirección en caso de éxito
-      failure: 'https://contratar.com.ar/failure', // URL de redirección en caso de fallo
-      pending: 'https://contratar.com.ar/pending', // URL de redirección en caso de pendiente
+      success: 'https://www.contratar.com.ar/success',
+      failure: 'https://www.contratar.com.ar/failure',
+      pending: 'https://www.contratar.com.ar/pending',
     },
   };
 
