@@ -75,7 +75,7 @@ app.post('/generate-payment-preference', (req, res) => {
         quantity: 1,
       },
     ],
-    external_reference: userId,
+    external_reference: userId.toString(),
     back_urls: {
       success: 'https://www.contratar.com.ar/success',
       failure: 'https://www.contratar.com.ar/failure',
