@@ -1,5 +1,6 @@
 const express = require('express');
 const passport = require('passport');
+const multer = require('multer');
 const router = express.Router();
 const User = require("../models/user")
 
@@ -115,11 +116,27 @@ router.get('/profile', (req, res) => {
   }
 });
 
+// Configura la configuración de Multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './public/uploads'); // Define la carpeta donde se guardarán las imágenes
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + '.' + file.originalname.split('.').pop());
+  }
+});
 
-router.post('/update-profile-image', async (req, res) => {
+const upload = multer({ storage: storage });
+
+// Ruta para actualizar la imagen de perfil
+router.post('/update-profile-image', upload.single('profileImage'), async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
-    user.profileImage = req.body.profileImage; // Actualiza el campo de la imagen de perfil con la URL ingresada
+
+    // Actualiza el campo de la imagen de perfil con la URL del archivo cargado
+    user.profileImage = '/uploads/' + req.file.filename;
+
     await user.save();
     res.redirect('/profile');
   } catch (error) {
@@ -127,6 +144,7 @@ router.post('/update-profile-image', async (req, res) => {
     res.redirect('/profile');
   }
 });
+
 
 // Ruta para actualizar la descripción del perfil
 router.post('/update-profile-description', async (req, res) => {

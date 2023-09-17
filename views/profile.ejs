@@ -12,11 +12,11 @@
 />
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white ">
+<body class="bg-white min-h-screen">
   
     <!-- NavBar -->
     <%- include('partials/navbar') %>
-    <div class="min-h-screen bg-primary-content pb-10 py-3">
+    <div class="bg-primary-content pb-10 py-3 mt-5">
   <div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
     <div class="bg-white p-4 mt-5 md:p-8 rounded-lg shadow-md w-full md:w-2/3 lg:w-1/2">
     <div class="text-center">
@@ -30,17 +30,23 @@
     <h1 class="text-2xl font-bold mb-4 text-center">Tu perfil</h1>
     <ul>
       <li class="flex items-center flex-col">
-        <img src="<%= user.profileImage %>" alt="" class="rounded-full w-20 h-20 object-cover ring ring-primary ring-offset-base-100 ring-offset-2">
+        <img src="<%= user.profileImage %>" alt="" class="rounded-full w-20 h-20 object-cover">
         <h5 class="font-semibold mt-2"><%= user.fullName %></h5>
       </li>
     </ul>
       <!-- Contenedor para el formulario y el botón de carga -->
   <div id="photoFormContainer" class="text-center" style="display: none;">
-    <form action="/update-profile-image" method="POST" class="mt-4">
-      <label for="profileImage">Url de imagen:</label>
-      <input type="url" name="profileImage" id="profileImage" class="block w-full px-4 py-2 border rounded" placeholder="Enter image URL">
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2 text-center">Subir imagen</button>
-    </form>
+    <form action="/update-profile-image" method="POST" class="mt-4" enctype="multipart/form-data">
+      <label for="profileImage">Selecciona una imagen de perfil:</label><br>
+      <input type="file" name="profileImage" id="profileImage" accept="image/*" class="text-sm text-slate-500
+      file:mr-4 file:py-2 file:px-4
+      file:rounded-full file:border-0
+      file:text-sm file:font-semibold
+      file:bg-indigo-200 file:text-indigo-500
+      hover:file:bg-indigo-300
+    " /><br>
+      <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-lg mt-2 text-center">Subir imagen</button>
+    </form>    
   </div>
   <h2 class="text-lg font-semibold mt-4 mb-4">Descripción:</h2>
   <p><%= user.description %></p>
@@ -48,14 +54,14 @@
  <!-- Contenedor para el formulario de edición de descripción -->
 <div id="descriptionFormContainer" class="text-center" style="display: none;">
     <form action="/update-profile-description" method="POST" class="mt-4">
-      <label for="description">Descripción:</label>
-      <textarea name="description" id="description" class="block w-full px-4 py-2 border rounded" placeholder="Escribe tu descripción aquí" maxlength="150"></textarea>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2 text-center">Actualizar Descripción</button>
+      <label for="description">Agrega una descripción:</label>
+      <textarea name="description" id="description" class="w-64 px-4 py-2 border rounded" placeholder="Conta en pocas palabras a que te dedicas." maxlength="150" style="display: flex; justify-content: center; margin:auto; margin-top: 10px;"></textarea>
+      <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-lg mt-2 text-center">Actualizar Descripción</button>
     </form>
   </div>
   <div class="flex text-center items-center justify-center p-2">
       <!-- Botón para editar la descripción -->
-      <a href="#" class="text-blue-500 hover:underline mx-2" id="editDescriptionLink">Editar descripción</a>
+      <a href="#" class="text-indigo-500 hover:underline mx-2" id="editDescriptionLink">Editar descripción</a>
 </div>
 </div>
 

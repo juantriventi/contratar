@@ -5,6 +5,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user'); 
 const authRoutes = require('./routes/auth');
+const multer = require('multer');
 
 
 // require('dotenv').config();
@@ -15,6 +16,10 @@ const app = express();
 // Configura el middleware para servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
+
+
+
+app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
 
 // Conectarse a MongoDB Atlas
 mongoose.connect("mongodb+srv://juancruztriventi:juancruztriventi@contratar.0vqvfsg.mongodb.net/contratar2?retryWrites=true&w=majority", {
