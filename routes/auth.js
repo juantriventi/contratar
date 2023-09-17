@@ -167,10 +167,8 @@ router.get('/users', async (req, res) => {
      // Obtener el estado de autenticación del usuario
      const isAuthenticated = req.isAuthenticated();
     
-    // Filter out recruiters from the users list
-    const filteredUsers = users.filter(user => user.profession !== 'Reclutador');
     
-    res.render('users', { users: filteredUsers , isAuthenticated}); // Render the 'users' view with the filtered user list
+    res.render('users', { users , isAuthenticated}); 
   } catch (error) {
     console.error(error);
     res.render('error', { message: 'Error al obtener la lista de usuarios.' });

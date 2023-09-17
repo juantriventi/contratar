@@ -29,7 +29,14 @@
             <h1 class="text-5xl text-indigo-200 font-bold text-left sm:text-center sm:text-left mb-5 sm:mb-0">Hola <%= user.username %>!</h1>
             <p class="mt-[-15px] mb-2 sm:py-6 sm:mb-0 sm:flex">Bienvenido/a a Contratar! Somos la web que sostiene a una gran comunidad de trabajadores manuales.</p>
             <a href="/users" class="bg-indigo-500 text-white p-3 rounded hover:bg-indigo-600 hidden sm:flex">Comenzar</a>
-          </div>          
+            <%= user.id %>
+            <form action="/generate-payment-preference" method="POST">
+              <input type="hidden" name="id" value="<%= user.id %>">
+              <!-- Otros campos del formulario (monto, detalles, etc.) -->
+              <input type="submit" value="Realizar Pago">
+            </form>
+            
+                      </div>          
         </div>
       </div>
 

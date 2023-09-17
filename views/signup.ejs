@@ -11,12 +11,12 @@
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
   <div class="bg-white p-8 rounded-lg shadow-md w-full sm:w-2/3 md:w-1/2 lg:w-1/3 text-center">
     <h1 class="text-2xl font-bold mb-4">Crear cuenta</h1>
-    <form action="/signup" method="post">
-      <input type="text" name="fullName" placeholder="Nombre completo" required class="w-full p-2 mb-2 rounded">
-      <input type="text" name="username" placeholder="Usuario" required class="w-full p-2 mb-2 rounded">
-      <input type="password" name="password" placeholder="Contraseña" required class="w-full p-2 mb-2 rounded">
-      <input type="email" name="email" placeholder="Correo electrónico" required class="w-full p-2 mb-2 rounded">
-      <input type="tel" name="contact" placeholder="Número de celular" required class="w-full p-2 mb-2 rounded">
+    <form action="/signup" method="post" onsubmit="return validateEmail()">
+      <input type="text" name="fullName" placeholder="Nombre completo" required class="w-full p-2 mb-2 rounded" minlength="4">
+      <input type="text" name="username" placeholder="Usuario" required class="w-full p-2 mb-2 rounded" minlength="4">
+      <input type="password" name="password" placeholder="Contraseña" required class="w-full p-2 mb-2 rounded" minlength="8">
+      <input type="email" name="email" id="user-email" placeholder="Correo electrónico" required class="w-full p-2 mb-2 rounded" minlength="8" oninput="validateEmail()">
+      <input type="tel" name="contact" placeholder="Número de celular" required class="w-full p-2 mb-2 rounded" minlength="8">
       <select name="profession" required class="w-full p-2 mb-4 rounded" onchange="togglePriceField()">
         <option value="" disabled selected>Área de trabajo</option>
         <option value="Tecnologia">Tecnologia</option>
@@ -28,7 +28,6 @@
         <option value="Diseño">Diseño</option>
         <option value="Constructores">Constructores</option>
         <option value="Redes sociales">Redes sociales</option>
-        <option value="Reclutador">Estoy buscando empleados</option>
       </select>
       <select name="price" class="w-full p-2 mb-2 rounded">
         <option value="" disabled selected>Selecciona un precio por hora</option>
@@ -36,6 +35,7 @@
           <option value="<%= price %>">$<%= price %> por hora</option>
         <% } %>
       </select>
+      <div id="email-error" class="text-red-500 mb-2"></div>
       <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 w-full">Crear</button>
     </form>
     
@@ -46,6 +46,5 @@
     <% } %>
   </div>
   <script src="/utils/signUp.js"></script>
-
 </body>
 </html>

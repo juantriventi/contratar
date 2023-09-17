@@ -1,13 +1,16 @@
-function togglePriceField() {
-    const professionSelect = document.querySelector('select[name="profession"]');
-    const priceSelect = document.querySelector('select[name="price"]');
-    const selectedProfession = professionSelect.value;
+//Valido email con REGEX
+function validateEmail() {
 
-    if (selectedProfession === "Reclutador") {
-      priceSelect.classList.add('hidden');
-      priceSelect.removeAttribute('required'); // Remove the 'required' attribute
-    } else {
-      priceSelect.classList.remove('hidden');
-      priceSelect.setAttribute('required', 'required'); // Add the 'required' attribute
-    }
+  const emailField = document.getElementById('user-email');
+  const emailError = document.getElementById('email-error');
+  
+  const validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+
+  if (validEmail.test(emailField.value)) {
+    emailError.textContent = ''; 
+    return true;
+  } else {
+    emailError.textContent = 'Email inválido'; 
+    return false;
   }
+}

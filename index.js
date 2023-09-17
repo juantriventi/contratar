@@ -5,19 +5,14 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user'); 
 const authRoutes = require('./routes/auth');
-const multer = require('multer');
-
-
-// require('dotenv').config();
-
+const bodyParser = require('body-parser');
+const mercadopago = require('mercadopago');
 
 const app = express();
 
 // Configura el middleware para servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
-
-
 
 app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
 
@@ -60,6 +55,49 @@ app.use((req, res, next) => {
 
 // Configuración de las rutas
 app.use('/', authRoutes);
+
+
+//Mercado pago
+app.use(bodyParser.json());
+
+mercadopago.configurations.setAccessToken('TEST-6869864857069449-042416-d523d3cc25c701939dfa1141194e2b64-490506466');
+
+// Configura la ruta para manejar la solicitud POST desde el formulario
+app.post('/generate-payment-preference', (req, res) => {
+  const userId = req.body.id; // Recupera el ID del usuario del formulario
+
+  // Crea la preferencia de pago en Mercado Pago con los detalles del pago
+  const preference = {
+    items: [
+      {
+        title: 'Suscripción Premium',
+        unit_price: 100, // Monto en centavos (100 pesos)
+        quantity: 1,
+      },
+    ],
+    external_reference: userId.toString(), // Referencia externa (puede ser el ID de usuario)
+    back_urls: {
+      success: 'https://tu-sitio.com/success', // URL de redirección en caso de éxito
+      failure: 'https://tu-sitio.com/failure', // URL de redirección en caso de fallo
+      pending: 'https://tu-sitio.com/pending', // URL de redirección en caso de pendiente
+    },
+  };
+
+  // Crea la preferencia de pago en Mercado Pago
+  mercadopago.preferences.create(preference)
+    .then((response) => {
+      // Obtiene la URL de pago generada
+      const paymentUrl = response.body.init_point;
+
+      // Redirige al usuario a la URL de pago de Mercado Pago
+      res.redirect(paymentUrl);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).json({ error: 'Error al generar la preferencia de pago' });
+    });
+});
+
 
 
 app.listen(3000, () => {
