@@ -14,7 +14,11 @@
               </div>
             </div>
             <div class="navbar-center">
-              <a class="btn btn-ghost normal-case text-xl">Contratar</a>
+              <% if (user.premium) { %>
+                <a class="btn btn-ghost normal-case text-xl">Contratar Premium</a>
+              <% } else { %>
+                <a class="btn btn-ghost normal-case text-xl">Contratar</a>
+              <% } %>
             </div>
           <div class="navbar-end mr-2">
             <div class="dropdown dropdown-end">

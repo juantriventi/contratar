@@ -60,7 +60,7 @@ app.use('/', authRoutes);
 //Mercado pago
 app.use(bodyParser.json());
 
-mercadopago.configurations.setAccessToken('TEST-6869864857069449-042416-d523d3cc25c701939dfa1141194e2b64-490506466');
+mercadopago.configurations.setAccessToken('APP_USR-6869864857069449-042416-97c054571c7a9f1e271565fd14e7ea6f-490506466');
 
 // Configura la ruta para manejar la solicitud POST desde el formulario
 app.post('/generate-payment-preference', (req, res) => {
@@ -77,8 +77,8 @@ app.post('/generate-payment-preference', (req, res) => {
     external_reference: userId.toString(),
     back_urls: {
       success: 'https://www.contratar.com.ar/success',
-      failure: 'https://www.contratar.com.ar/failure',
-      pending: 'https://www.contratar.com.ar/pending',
+      failure: 'https://www.contratar.com.ar',
+      pending: 'https://www.contratar.com.ar',
     },
   };
 
@@ -99,29 +99,22 @@ app.post('/generate-payment-preference', (req, res) => {
 
 // Configura la ruta de éxito para manejar el resultado del pago
 app.get('/success', (req, res) => {
-  // Verifica el estado del pago utilizando la información proporcionada por Mercado Pago
-  const paymentStatus = req.query.status; // Obtén el estado del pago desde la URL (esto depende de cómo lo configures con Mercado Pago)
-
+  const paymentStatus = req.query.status;
+  console.log(paymentStatus)
   if (paymentStatus === 'approved') {
     // Si el pago se ha aprobado, actualiza la propiedad premium a true en tu base de datos
     const userId = req.query.external_reference; // Obtén el ID de usuario desde la URL
 
-    // Aquí deberías tener la lógica para actualizar la propiedad premium del usuario a true en tu base de datos
-    // Puedes utilizar tu ORM o librería de base de datos preferida para hacerlo
-    // Ejemplo con Mongoose (para MongoDB):
     User.findByIdAndUpdate(userId, { premium: true }, (err, user) => {
       if (err) {
         console.error(err);
-        // Manejo de errores
       } else {
-        // La propiedad premium del usuario ahora es true
-        // Puedes realizar cualquier otra acción necesaria después de la actualización
-        res.redirect('/premium-success'); // Redirige a una página de éxito de premium
+        
+        res.redirect('/profile'); // Redirige a una página de éxito
       }
     });
   } else {
-    // Maneja otros estados de pago según sea necesario
-    res.redirect('/payment-failure'); // Redirige a una página de fallo de pago
+    res.redirect('/'); // Redirige a una página de fallo
   }
 });
 

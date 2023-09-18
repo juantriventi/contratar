@@ -1,4 +1,5 @@
 <!--PopUp-->
+<% if (!user.premium) { %>
 <div id="popup" class="alert bg-success absolute z-10 w-full top-[15vh] sm:top-[12vh]" style="display: none;">
     <p>Pasate a premium y dale mas visibilidad a tu perfil.</p>
     <div>
@@ -25,3 +26,4 @@
      // Llamar a la función para mostrar el PopUp después de cargar la página
      window.onload = mostrarPopUp;
  </script>
+<% } %>
