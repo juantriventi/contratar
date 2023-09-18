@@ -70,7 +70,7 @@ app.post('/generate-payment-preference', (req, res) => {
     items: [
       {
         title: 'Suscripción Premium',
-        unit_price: 10,
+        unit_price: 10, 
         quantity: 1,
       },
     ],
@@ -102,7 +102,7 @@ app.get('/success', (req, res) => {
   const paymentStatus = req.query.status;
   console.log(paymentStatus)
   if (paymentStatus === 'approved') {
-    // Si el pago se ha aprobado, actualiza la propiedad premium a true en tu base de datos
+
     const userId = req.query.external_reference; // Obtén el ID de usuario desde la URL
 
     User.findByIdAndUpdate(userId, { premium: true }, (err, user) => {

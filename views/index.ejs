@@ -27,17 +27,17 @@
         <div class="hero-content flex-col lg:flex-row">
           <img src="images/fondo.jpg" class="max-w-sm rounded-lg shadow-2xl hidden lg:flex" loading="eager"/>
           <div class="sm:ml-10 flex flex-col sm:items-start">
-            <h1 class="text-5xl text-indigo-200 font-bold text-left sm:text-center sm:text-left mb-5 sm:mb-0">Hola <%= user.username %>!</h1>
+            <h1 class="text-5xl text-indigo-400 font-bold text-left sm:text-center sm:text-left mb-5 sm:mb-0">Hola <%= user.username %>!</h1>
             <p class="mt-[-15px] mb-2 sm:py-6 sm:mb-0 sm:flex">Bienvenido/a a Contratar! Somos la web que sostiene a una gran comunidad de trabajadores manuales.</p>
-            <a href="/users" class="bg-indigo-500 text-white p-3 rounded hover:bg-indigo-600 hidden sm:flex">Comenzar</a>         </div>          
+            <a href="/jobs" class="bg-indigo-500 text-white p-3 rounded hover:bg-indigo-600 hidden sm:flex">Comenzar</a>
+          </div>          
         </div>
       </div>
-
       <div class="grid grid-cols-1 px-10 sm:grid-cols-2 sm:py-10 md:grid-cols-2 gap-4">
         <!-- Primera tarjeta -->
         <div class="card card-compact shadow-xl">
           <div class="card-body">
-            <h2 class="card-title text-indigo-200">Ofertas</h2>
+            <h2 class="card-title text-indigo-400">Ofertas</h2>
             <p>Subi ofertas laborales o aplica facilmente a ellas</p>
         <div class="grid grid-cols-2">
             <div class="card-actions justify-start col-span-1">
@@ -46,7 +46,7 @@
                   <span class="text-4xl font-bold text-indigo-500">
                     <%= offerCount %>
                   </span>
-                  <span class="text-xs uppercase text-gray-500">
+                  <span class="text-xs uppercase font-semibold">
                     <span>ofertas activas</span>
                   </span>
                 </p>
@@ -64,7 +64,7 @@
         <!-- Segunda tarjeta-->
         <div class="card card-compact shadow-xl">
           <div class="card-body">
-            <h2 class="card-title text-indigo-200">Candidatos</h2>
+            <h2 class="card-title text-indigo-400">Candidatos</h2>
             <p>Busca entre nuestros usuarios filtrando según tu interes</p>
         <div class="grid grid-cols-2">
             <div class="card-actions justify-start col-span-1"> 
@@ -73,7 +73,7 @@
                   <span class="text-4xl font-bold text-indigo-500">
                     <%= userCount %>
                   </span>
-                  <span class="text-xs uppercase text-gray-500">
+                  <span class="text-xs uppercase font-semibold">
                     <span>ofertas activas</span>
                   </span>
                 </p>

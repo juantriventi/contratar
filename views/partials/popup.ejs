@@ -1,12 +1,12 @@
 <!--PopUp-->
 <% if (!user.premium) { %>
-<div id="popup" class="alert bg-success absolute z-10 w-full top-[15vh] sm:top-[12vh]" style="display: none;">
-    <p>Pasate a premium y dale mas visibilidad a tu perfil.</p>
+<div id="popup" class="alert bg-violet-400 absolute z-10 bottom-[1vh] sm:px-20" style="display: none; position: fixed;">
+    <p class="text-white"><span class="hidden sm:flex">Contrata el plan Premuim y gana</span>más visibilidad y metricas personalizadas.</p>
     <div>
-        <button id="cancelButton" class="bg-indigo-300 text-white p-2 rounded hover:bg-indigo-600">cancelar</button>
+        <button id="cancelButton" class="bg-violet-300 text-white p-2 rounded hover:bg-violet-500">cancelar</button>
         <form action="/generate-payment-preference" method="POST">
             <input type="hidden" name="id" value="<%= user.id %>">
-            <input type="submit" class="bg-indigo-500 text-white p-2 rounded hover:bg-indigo-600" value="Pasar a premium">
+            <input type="submit" class="bg-violet-600 text-white p-2 rounded hover:bg-violet-700" value="Pasar a premium">
           </form>
     </div>
 </div>
