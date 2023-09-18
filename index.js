@@ -64,14 +64,13 @@ mercadopago.configurations.setAccessToken('TEST-6869864857069449-042416-d523d3cc
 
 // Configura la ruta para manejar la solicitud POST desde el formulario
 app.post('/generate-payment-preference', (req, res) => {
-  const userId = req.body.id; // Recupera el ID del usuario del formulario
+  const userId = req.body.id; 
 
-  // Crea la preferencia de pago en Mercado Pago con los detalles del pago
   const preference = {
     items: [
       {
         title: 'Suscripción Premium',
-        unit_price: 10, // Monto en centavos (100 pesos)
+        unit_price: 10,
         quantity: 1,
       },
     ],

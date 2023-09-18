@@ -1,0 +1,27 @@
+<!--PopUp-->
+<div id="popup" class="alert bg-success absolute z-10 w-full top-[15vh] sm:top-[12vh]" style="display: none;">
+    <p>Pasate a premium y dale mas visibilidad a tu perfil.</p>
+    <div>
+        <button id="cancelButton" class="bg-indigo-300 text-white p-2 rounded hover:bg-indigo-600">cancelar</button>
+        <form action="/generate-payment-preference" method="POST">
+            <input type="hidden" name="id" value="<%= user.id %>">
+            <input type="submit" class="bg-indigo-500 text-white p-2 rounded hover:bg-indigo-600" value="Pasar a premium">
+          </form>
+    </div>
+</div>
+<script>
+    // Función para mostrar el PopUp después de 5 segundos
+    function mostrarPopUp() {
+         setTimeout(function () {
+             document.getElementById('popup').style.display = 'flex';
+         }, 5000); // 5000 milisegundos = 5 segundos
+     }
+ 
+     // Función para ocultar el PopUp al hacer clic en el botón "cancelar"
+     document.getElementById('cancelButton').addEventListener('click', function () {
+         document.getElementById('popup').style.display = 'none';
+     });
+ 
+     // Llamar a la función para mostrar el PopUp después de cargar la página
+     window.onload = mostrarPopUp;
+ </script>

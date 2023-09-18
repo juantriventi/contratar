@@ -19,24 +19,19 @@
 
 
   <% if (user) { %>
-
+    
     <div class="min-h-screen bg-primary-content pb-10 py-10 ">
+      <%- include('partials/popup') %>
       <!--Hero-->
       <div class="hero px-10">
         <div class="hero-content flex-col lg:flex-row">
           <img src="images/fondo.jpg" class="max-w-sm rounded-lg shadow-2xl hidden lg:flex" loading="eager"/>
           <div class="sm:ml-10 flex flex-col sm:items-start">
             <h1 class="text-5xl text-indigo-200 font-bold text-left sm:text-center sm:text-left mb-5 sm:mb-0">Hola <%= user.username %>!</h1>
-            <p class="mt-[-15px] mb-2 sm:py-6 sm:mb-0 sm:flex">Mejora tu perfil haciendolo premium, hace que se visualice más tu perfil y posiciona en el top 3 tus ofertas.</p>
-            <form action="/generate-payment-preference" method="POST">
-              <input type="hidden" name="id" value="<%= user.id %>">
-              <input type="submit" class="bg-indigo-500 text-white p-3 rounded hover:bg-indigo-600 flex" value="Pasar a premium">
-            </form>
-            
-                      </div>          
+            <p class="mt-[-15px] mb-2 sm:py-6 sm:mb-0 sm:flex">Bienvenido/a a Contratar! Somos la web que sostiene a una gran comunidad de trabajadores manuales.</p>
+            <a href="/users" class="bg-indigo-500 text-white p-3 rounded hover:bg-indigo-600 hidden sm:flex">Comenzar</a>         </div>          
         </div>
       </div>
-
 
       <div class="grid grid-cols-1 px-10 sm:grid-cols-2 sm:py-10 md:grid-cols-2 gap-4">
         <!-- Primera tarjeta -->
