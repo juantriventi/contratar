@@ -1,6 +1,6 @@
 <!--PopUp-->
 <% if (!user.premium) { %>
-<div id="popup" class="alert bg-violet-400 absolute z-10 bottom-[1vh] sm:px-20" style="display: none; position: fixed;">
+<div id="popup" class="alert bg-violet-400 z-10 absolute bottom-1 sm:px-20 animate__animated animate__fadeInUp animate__delay-5s" style="display: flex; position: fixed;">
     <p class="text-white"><span class="hidden sm:flex">Contrata el plan Premuim y gana</span>más visibilidad y metricas personalizadas.</p>
     <div>
         <button id="cancelButton" class="bg-violet-300 text-white p-2 rounded hover:bg-violet-500">cancelar</button>
@@ -11,16 +11,10 @@
     </div>
 </div>
 <script>
-    // Función para mostrar el PopUp después de 5 segundos
-    function mostrarPopUp() {
-         setTimeout(function () {
-             document.getElementById('popup').style.display = 'flex';
-         }, 5000); // 5000 milisegundos = 5 segundos
-     }
  
      // Función para ocultar el PopUp al hacer clic en el botón "cancelar"
      document.getElementById('cancelButton').addEventListener('click', function () {
-         document.getElementById('popup').style.display = 'none';
+         document.getElementById('popup').className = 'alert bg-violet-400 z-10 absolute bottom-1 sm:px-20 animate__animated animate__fadeOutDown';
      });
  
      // Llamar a la función para mostrar el PopUp después de cargar la página
