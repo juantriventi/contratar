@@ -104,6 +104,7 @@ app.post('/generate-payment-preference', (req, res) => {
 // Configura la ruta de éxito para manejar el resultado del pago
 app.get('/success', (req, res) => {
   const paymentStatus = req.query.status;
+  console.log(User.id)
   console.log(paymentStatus)
   if (paymentStatus === 'approved') {
 
@@ -112,8 +113,12 @@ app.get('/success', (req, res) => {
     User.findByIdAndUpdate(userId, { premium: true }, (err, user) => {
       if (err) {
         console.error(err);
+        console.log(userId)
+        console.log(User.id)
         console.log("no pudimos pasar tu usuario a premium")
       } else {
+        console.log(userId)
+        console.log(User.id)
         console.log("pasamos tu usuario a premium")
         res.redirect('/'); // Redirige a una página de éxito
       }
