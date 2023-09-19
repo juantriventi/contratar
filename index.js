@@ -72,14 +72,18 @@ app.post('/generate-payment-preference', (req, res) => {
         title: 'Suscripción Premium',
         unit_price: 10, 
         quantity: 1,
+        currency_id:'ARS',
+        description:"Pago por suscripcion premium"
+
       },
     ],
     external_reference: userId.toString(),
     back_urls: {
       success: 'https://www.contratar.com.ar/success',
-      failure: 'https://www.contratar.com.ar',
-      pending: 'https://www.contratar.com.ar',
+      failure: 'https://www.contratar.com.ar/failure',
+      pending: 'https://www.contratar.com.ar/pending',
     },
+    "auto_return": "approved"
   };
 
   // Crea la preferencia de pago en Mercado Pago
@@ -108,13 +112,14 @@ app.get('/success', (req, res) => {
     User.findByIdAndUpdate(userId, { premium: true }, (err, user) => {
       if (err) {
         console.error(err);
+        console.log("no pudimos pasar tu usuario a premium")
       } else {
-        
-        res.redirect('/profile'); // Redirige a una página de éxito
+        console.log("pasamos tu usuario a premium")
+        res.redirect('/'); // Redirige a una página de éxito
       }
     });
   } else {
-    res.redirect('/'); // Redirige a una página de fallo
+    res.redirect('/error'); // Redirige a una página de fallo
   }
 });
 
