@@ -24,21 +24,52 @@
 
 
   <% if (user) { %>
-    
-    <div class="min-h-screen bg-primary-content pb-10 py-10 ">
-      <!--Hero-->
-      <div class="hero px-10">
-        <div class="hero-content flex-col lg:flex-row">
-          <img src="images/fondo.jpg" class="max-w-sm rounded-lg shadow-2xl hidden lg:flex" loading="eager"/>
-          <div class="sm:ml-10 flex flex-col sm:items-start">
-            <h1 class="text-5xl text-violet-400 font-bold text-left sm:text-center sm:text-left mb-5 sm:mb-0">Hola <%= user.username %>!</h1>
-            <p class="mt-[-15px] mb-2 sm:py-6 sm:mb-0 sm:flex">Bienvenido/a a Contratar! Somos la web que sostiene a una gran comunidad de trabajadores manuales.</p>
-            <a href="/jobs" class="bg-violet-600 text-white p-3 rounded hover:bg-violet-700 hidden sm:flex">Comenzar</a>
-          </div>          
+  <div class="min-h-screen bg-primary-content">
+
+  <!--Hero-->
+  <div class="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0">
+    <div class="inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
+      <svg class="absolute left-0 hidden h-full text-white transform -translate-x-1/2 lg:block" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
+        <path d="M50 0H100L50 100H0L50 0Z"></path>
+      </svg>
+      <img
+        class="hidden md:block object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
+        src="images/fondo.jpg"
+        alt="fondo"
+      />
+    </div>    
+    <div class="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
+      <div class=" lg:my-40 lg:max-w-lg lg:pr-5">
+        <h2 class="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none px-10">
+          Todo lo que<br class="hidden md:block" />
+          necesitas
+          <span class="inline-block text-violet-400">está aca!</span>
+        </h2>
+        <p class="pr-5 mb-0 px-10 text-base text-gray-700 md:text-lg">
+          Forma parte de esta gran comunidad que te ayuda a crecer como profesional dándote ofertas laborales ideales para tu perfil.
+        </p>
+        <div class="hidden sm:flex flex-col items-start md:flex-row">
+          <a
+            href="/jobs"
+            class="mb-3 md:mb-0 inline-flex items-center justify-center w-32 h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-violet-600 hover:bg-violet-700 focus:shadow-outline focus:outline-none"
+          >
+            Ofertas
+          </a>
+          <a
+            href="/users"
+            class="inline-flex items-center justify-center w-32 h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-violet-600 hover:bg-violet-700 focus:shadow-outline focus:outline-none"
+          >
+            Candidatos
+          </a>        
         </div>
       </div>
-      <div class="grid grid-cols-1 px-10 sm:grid-cols-2 sm:py-10 md:grid-cols-2 gap-4">
-        <!-- Primera tarjeta -->
+    </div>
+  </div>
+
+  <div class="divider sm:hidden mt-[-50px] px-20 "></div> 
+
+      <div class="grid grid-cols-1 px-10 sm:grid-cols-2 sm:py-10 md:grid-cols-2 gap-4 pb-4">
+      
         <div class="card card-compact shadow-xl">
           <div class="card-body">
             <h2 class="card-title text-violet-400">Ofertas</h2>
@@ -65,7 +96,7 @@
         
         
       
-        <!-- Segunda tarjeta-->
+       
         <div class="card card-compact shadow-xl">
           <div class="card-body">
             <h2 class="card-title text-violet-400">Candidatos</h2>
