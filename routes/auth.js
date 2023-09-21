@@ -305,7 +305,18 @@ router.post('/users/delete-offer', async (req, res) => {
 });
 
 
+// Ruta para mostrar el perfil del usuario
+router.get('/pricing', (req, res) => {
 
+  // Obtener el estado de autenticación del usuario
+  const isAuthenticated = req.isAuthenticated();
+
+  if (req.isAuthenticated()) {
+    res.render('pricing', { user: req.user , isAuthenticated }); // Pasa el usuario autenticado a la vista
+  } else {
+    res.render("login")
+  }
+});
 
 
 // Ruta para cerrar sesión
