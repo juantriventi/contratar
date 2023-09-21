@@ -305,7 +305,7 @@ router.post('/users/delete-offer', async (req, res) => {
 });
 
 
-// Ruta para mostrar el perfil del usuario
+// Ruta para pricing
 router.get('/pricing', (req, res) => {
 
   // Obtener el estado de autenticación del usuario
