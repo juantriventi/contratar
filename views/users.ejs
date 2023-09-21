@@ -23,7 +23,7 @@
     <% if (user) { %>
       <div class="min-h-screen bg-primary-content pb-10 py-3">
       <div class="container sm:px-20 p-2 mx-auto">
-        <button id="filter-button" class="bg-indigo-500 text-white rounded-lg right-10 top-25 p-3 absolute" style="z-index: 2; margin-top: 5px;">Ver filtros</button>
+        <button id="filter-button" class="bg-violet-600 text-white rounded-lg right-10 top-25 p-3 absolute" style="z-index: 2; margin-top: 5px;">Ver filtros</button>
         <div class="mt-2 mb-4">
           <select id="profession-select" class="py-2 mt-20 p-3 border rounded-md left-10 top-5 p-3 absolute" style="display: none; width: 55%;">
             <option value="all">Mostrar todos</option>
@@ -51,7 +51,7 @@
                 </div>
                 <span class="text-sm font-semibold">$<%= user.price %>/hr</span>
               </div>
-              <p class="profession mr-3 mb-2 text-indigo-300 font-bold"><%= user.profession %></p>
+              <p class="profession mr-3 mb-2 text-violet-400 font-bold"><%= user.profession %></p>
               <div class="ml-auto arrow-down">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
                   <path d="M2.56 5.44a.5.5 0 0 0 .688.062L8 1.207l4.756 4.295a.5.5 0 1 0 .624-.78l-5-4.5a.5.5 0 0 0-.624 0l-5 4.5a.5.5 0 0 0-.062.687z"/>
@@ -77,7 +77,7 @@
         <div class="max-w-md">
           <h1 class="mb-5 text-5xl font-bold">Bienvenido!</h1>
           <p class="mb-5">Somos la web que representa a los trabajadores manuales y los ayuda a encontrar trabajos temporales.</p>
-          <a href="/login"><button class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 w-64">Iniciar</button></a>
+          <a href="/login"><button class="bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-600 w-64">Iniciar</button></a>
         </div>
       </div>
     </div>

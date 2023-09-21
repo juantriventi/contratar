@@ -2,10 +2,14 @@
 <html lang="es">
 <head>
   <title>Crear cuenta</title>
-  <!-- Agrega el enlace a tu archivo CSS de Tailwind -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/AR.png" type="image/x-icon">
+  <link
+  href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
@@ -36,10 +40,10 @@
         <% } %>
       </select>
       <div id="email-error" class="text-red-500 mb-2"></div>
-      <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 w-full">Crear</button>
+      <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700 w-full">Crear</button>
     </form>
     
-    <p class="my-2">¿Ya tienes una cuenta? <a href="/login" class="text-indigo-500 hover:underline">Inicia sesión</a></p>
+    <p class="my-2">¿Ya tienes una cuenta? <a href="/login" class="text-violet-600 hover:underline">Inicia sesión</a></p>
     
     <% if (typeof error !== 'undefined') { %>
       <p class="text-red-500 my-2"><%= error %></p>

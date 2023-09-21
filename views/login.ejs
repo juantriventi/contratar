@@ -19,10 +19,10 @@
     <form action="/login" method="POST">
       <input type="text" name="username" placeholder="Usuario" required class="w-full p-2 mb-2 rounded">
       <input type="password" name="password" placeholder="Contraseña" required class="w-full p-2 mb-4 rounded">
-      <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 w-full">Ingresar</button>
+      <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700 w-full">Ingresar</button>
     </form>
     
-    <p class="my-2">¿No tienes una cuenta? <a href="/signup" class="text-indigo-500 hover:underline">Crea una cuenta</a></p>
+    <p class="my-2">¿No tienes una cuenta? <a href="/signup" class="text-violet-600 hover:underline">Crea una cuenta</a></p>
     
     <% if (typeof error !== 'undefined') { %>
       <p class="text-red-500 my-2"><%= error.message %></p>

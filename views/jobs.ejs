@@ -20,7 +20,7 @@
 
   <% if (user) { %>
     <div class="min-h-screen bg-primary-content pb-10 py-3">
-    <button id="toggleFilterButton" class="bg-indigo-500 text-white rounded-lg left-5 top-20 p-3 absolute" style="margin-top: 10px;">Filtrar ofertas</button>
+    <button id="toggleFilterButton" class="bg-violet-600 text-white rounded-lg left-5 top-20 p-3 absolute" style="margin-top: 10px;">Filtrar ofertas</button>
     <div class="relative"></div>
     <form id="filterForm" action="/jobs" method="get" class="hidden rounded-lg text-center p-3 mt-20 flex justify-center items-center" >
       <div class="flex flex-col items-center">
@@ -36,13 +36,13 @@
           <option value="Constructores">Constructores</option>
           <option value="Redes sociales">Redes sociales</option>
         </select>
-        <button class="bg-indigo-500 text-white rounded-lg py-2 px-6 block" type="submit">Aplicar filtro</button>
+        <button class="bg-violet-600 text-white rounded-lg py-2 px-6 block" type="submit">Aplicar filtro</button>
       </div>
     </form>
     
     
 
-    <button id="toggleFormButton" class="bg-indigo-500 text-white rounded-lg right-5 top-20 p-3 absolute" style="margin-top: 10px;">Crear oferta</button>
+    <button id="toggleFormButton" class="bg-violet-600 text-white rounded-lg right-5 top-20 p-3 absolute" style="margin-top: 10px;">Crear oferta</button>
 
     <form id="offerForm" action="/users/create-offer" method="post" class="hidden bg-gray-100 p-4 rounded-lg text-center">
       <select name="categoria" required class="block mx-auto mb-2 p-2 rounded-lg w-64 text-center">
@@ -59,7 +59,7 @@
       </select>
       <input type="number" name="precio" placeholder="Precio total" required class="block mx-auto mb-2 p-2 rounded-lg w-64">
       <textarea name="descripcion" placeholder="Descripción oferta" required class="block mx-auto mb-2 p-2 rounded-lg w-64 h-32" maxlength="30"></textarea>
-      <button class="bg-indigo-500 text-white rounded-lg py-2 px-6" type="submit">Crear Oferta</button>
+      <button class="bg-violet-600 text-white rounded-lg py-2 px-6" type="submit">Crear Oferta</button>
     </form>
     
   
@@ -73,7 +73,7 @@
             <!-- Mostrar la imagen del usuario que publicó la oferta -->
             <img src="<%= oferta.user.profileImage %>" alt="<%= oferta.user.username %>'s Profile" class="rounded-full w-20 h-20 object-cover mr-2">
             <div class="ml-2 flex-grow">
-              <p class="text-indigo-300 font-bold"><%= oferta.categoria %></p>
+              <p class="text-violet-400 font-bold"><%= oferta.categoria %></p>
               <p class="font-semibold">$<%= new Intl.NumberFormat('es-ES', { style: 'decimal' }).format(Number(oferta.precio)) %></p>
               <p class="oferta-descripcion"><%= oferta.descripcion %></p>
             </div>
@@ -96,7 +96,7 @@
                 <button class="bg-red-600 text-white rounded-lg px-5 py-2 mt-2 md:mt-0 " type="submit">Eliminar</button>
               </form>    
             <% } else { %>
-              <button class="bg-indigo-500 text-white rounded-lg px-6 py-2 mt-2 md:mt-0">
+              <button class="bg-violet-600 text-white rounded-lg px-6 py-2 mt-2 md:mt-0">
                 <a href="mailto:<%= oferta.user.email %>?subject=contratar.com.ar/aplicacion" target="_blank" rel="noopener noreferrer">
                   Aplicar
                 </a>
@@ -123,7 +123,7 @@
         <div class="max-w-md">
           <h1 class="mb-5 text-5xl font-bold">Bienvenido!</h1>
           <p class="mb-5">Somos la web que representa a los trabajadores manuales y los ayuda a encontrar trabajos temporales.</p>
-          <a href="/login"><button class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 w-64">Iniciar</button></a>
+          <a href="/login"><button class="bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700 w-64">Iniciar</button></a>
         </div>
       </div>
     </div>
