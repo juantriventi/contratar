@@ -28,36 +28,35 @@
 
   <!--Hero-->
   <div class="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0">
-    <div class="inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
-      <svg class="absolute left-0 hidden h-full text-white transform -translate-x-1/2 lg:block" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
+    <div class="sm:hidden lg:flex inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
+      <svg class="absolute left-0 h-full text-white transform -translate-x-1/2 lg:block" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
         <path d="M50 0H100L50 100H0L50 0Z"></path>
       </svg>
       <img
-        class="hidden md:block object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
+        class="md:block object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
         src="images/fondo.jpg"
         alt="fondo"
       />
     </div>    
-    <div class="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
-      <div class=" lg:my-40 lg:max-w-lg lg:pr-5">
-        <h2 class="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none px-10">
-          Todo lo que<br class="hidden md:block" />
-          necesitas
-          <span class="inline-block text-violet-400">está aca!</span>
+    <div class="absolute top-[90px] sm:top-0 sm:relative flex flex-col items-start w-full max-w-xl sm:px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
+      <div class="mb-5 mt-3 lg:my-40 lg:max-w-lg lg:pr-5">
+        <h2 class="mb-5 block sm:inline-block font-sans text-1xl sm:text-2xl px-10 sm:px-0 font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+         Todo lo que <br class="sm:hidden"> necesitas<br class="hidden md:block" />
+          <span class="block sm:inline-block text-violet-400">lo tenes <br class="sm:hidden"> aca!</span>
         </h2>
-        <p class="pr-5 mb-0 px-10 text-base text-gray-700 md:text-lg">
-          Forma parte de esta gran comunidad que te ayuda a crecer como profesional dándote ofertas laborales ideales para tu perfil.
+        <p class="pr-5 hidden sm:flex mb-5 text-gray-500 md:text-lg">
+          Forma parte de esta gran comunidad que te ayuda a crecer como profesional dandote ofertas laborales ideales para tu perfil.
         </p>
-        <div class="hidden sm:flex flex-col items-start md:flex-row">
+        <div class="hidden sm:flex items-center justify-center sm:justify-start mt-5 sm:mt-0">
           <a
             href="/jobs"
-            class="mb-3 md:mb-0 inline-flex items-center justify-center w-32 h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-violet-600 hover:bg-violet-700 focus:shadow-outline focus:outline-none"
+            class="inline-flex items-center justify-center w-20 h-12 sm:w-32 sm:h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-violet-600 hover:bg-violet-700 focus:shadow-outline focus:outline-none"
           >
             Ofertas
           </a>
           <a
             href="/users"
-            class="inline-flex items-center justify-center w-32 h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-violet-600 hover:bg-violet-700 focus:shadow-outline focus:outline-none"
+            class="inline-flex items-center justify-center w-22 h-12 sm:w-32 sm:h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-violet-600 hover:bg-violet-700 focus:shadow-outline focus:outline-none"
           >
             Candidatos
           </a>        
