@@ -17,6 +17,27 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
   <title>Inicio</title>
+  <style>
+    .parallax {
+      /* The image used */
+      background-image: url("images/fondo.jpg");
+    
+      /* Set a specific height */
+      min-height: 300px; 
+    
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    @media (max-width: 400px) {
+      .parallax {
+        display: none;
+      }
+    }
+</style>
+
   </head>
 <body>
   <!-- NavBar -->
@@ -34,12 +55,12 @@
       </svg>
       <img
         class="md:block object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
-        src="images/fondo.jpg"
+        src="images/empleados2.jpg"
         alt="fondo"
       />
     </div>    
     <div class="absolute top-[90px] sm:top-0 sm:relative flex flex-col items-start w-full max-w-xl sm:px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
-      <div class="mb-5 mt-3 lg:my-40 lg:max-w-lg lg:pr-5">
+      <div class="mb-5 mt-4 sm:mt-10 md:mb-12 lg:my-40 lg:max-w-lg lg:pr-5">
         <h2 class="mb-5 block sm:inline-block font-sans text-1xl sm:text-2xl px-10 sm:px-0 font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
          Todo lo que <br class="sm:hidden"> necesitas<br class="hidden md:block" />
           <span class="block sm:inline-block text-violet-400">lo tenes <br class="sm:hidden"> aca!</span>
@@ -65,7 +86,14 @@
     </div>
   </div>
 
-  <div class="divider sm:hidden mt-[-50px] px-20 "></div> 
+  <!--Parallax-->
+<div class="hidden sm:block sm:mt-12 md:mt-0">
+  <div class="parallax text-white sm:px-20 hidden md:block" style="text-align: center; display: flex; justify-content: center; align-items: center;">
+    Nuestra misión en esta empresa es clara y apasionada: Conectar a los dedicados artesanos y expertos en oficios con las oportunidades laborales que tanto merecen. Somos la plataforma que te acerca a un mundo de posibilidades laborales, donde tus habilidades y experiencia se valoran y respetan. Creemos en la importancia de cada tarea, en la maestría de cada oficio, y estamos comprometidos en hacer que tu talento brille.
+    En un mundo donde la demanda de trabajadores especializados nunca ha sido tan alta, estamos aquí para facilitar la búsqueda de empleo y brindarte un espacio donde puedas prosperar. Nuestro propósito es construir una comunidad que fomente el crecimiento profesional y la satisfacción en el trabajo.
+  </div>
+</div>
+
 
       <div class="grid grid-cols-1 px-10 sm:grid-cols-2 sm:py-10 md:grid-cols-2 gap-4 pb-4">
       
