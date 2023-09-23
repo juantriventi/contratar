@@ -39,11 +39,7 @@
         display: none;
       }
     }
-    @media (max-width: 2000px){ 
-      body{
-        overflow-y: hidden;
-      }
-    }
+
 </style>
 
   </head>
@@ -160,10 +156,10 @@
   <% } else { %>
 
   <!--Hero-->
-  <div class="max-h-screen bg-primary-content">
+  <div class="h-screen min-h-screen bg-primary-content">
  
     
-<section class="bg-white z-[-1] pb-20 mt-5 sm:pb-20 sm:mt-10 dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
+<section class="h-screen min-h-screen bg-white z-[-1] mt-5 sm:pb-20 sm:mt-10 dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
   <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
       <a href="/login" class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-violet-700 bg-violet-100 rounded-full dark:bg-violet-900 dark:text-violet-300 hover:bg-violet-200 dark:hover:bg-violet-800">
           <span class="text-xs bg-violet-600 rounded-full text-white px-4 py-3.5 sm:py-1.5 mr-3">Nuevo</span> <span class="text-sm font-medium">Perfil con estadisticas! Ingresa y mira como funciona</span> 
@@ -186,9 +182,9 @@
           </div>
       </form>
   </div>
-  <div class="bg-gradient-to-b from-violet-500 to-dark w-full h-[600px] lg:h-[1200px] absolute top-[12vh] left-0 z-0"></div>
 </section>
-  </div>
+<div class="bg-gradient-to-b from-violet-500 to-dark w-full h-full absolute top-[10vh] left-0 z-0"></div>
+</div>
 
   <% } %>
 </body>
