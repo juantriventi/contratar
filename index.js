@@ -7,12 +7,15 @@ const User = require('./models/user');
 const authRoutes = require('./routes/auth');
 const bodyParser = require('body-parser');
 const mercadopago = require('mercadopago');
+const path = require("path");
 
 const app = express();
 
 // Configura el middleware para servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 
 app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
 
