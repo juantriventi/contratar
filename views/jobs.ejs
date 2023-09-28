@@ -18,7 +18,7 @@
   <!-- NavBar -->
   <%- include('partials/navbar') %>
 
-  <% if (user) { %>
+  <% if (isAuthenticated) { %>
     <div class="min-h-screen bg-primary-content pb-10 py-3">
     <button id="toggleFilterButton" class="bg-violet-600 text-white rounded-lg left-5 top-20 p-3 absolute" style="margin-top: 10px;">Filtrar ofertas</button>
     <div class="relative"></div>

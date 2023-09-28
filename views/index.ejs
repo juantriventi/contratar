@@ -48,7 +48,7 @@
   <%- include('partials/navbar') %>
 
 
-  <% if (user) { %>
+  <% if (isAuthenticated) { %>
   <div class="min-h-screen bg-primary-content">
 
   <!--Hero-->
@@ -156,8 +156,8 @@
   <% } else { %>
     <div class="min-h-screen bg-primary-content">
   <!--Hero-->
-  <div class="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0">
-    <div class="sm:hidden lg:flex inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
+  <div class="relative flex flex-col-reverse md:py-16 lg:pt-0 lg:flex-col lg:pb-0">
+    <div class="hidden lg:flex inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
       <svg class="absolute left-0 h-full text-white transform -translate-x-1/2 lg:block" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
         <path d="M50 0H100L50 100H0L50 0Z"></path>
       </svg>
@@ -167,19 +167,19 @@
         alt="fondo"
       />
     </div>    
-    <div class="absolute top-[90px] sm:top-0 sm:relative flex flex-col items-start w-full max-w-xl sm:px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
-      <div class="mb-5 mt-4 sm:mt-10 md:mb-12 lg:my-40 lg:max-w-lg lg:pr-5">
-        <h2 class="mb-5 block sm:inline-block font-sans text-1xl sm:text-2xl px-10 sm:px-0 font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-         Todo lo que <br class="sm:hidden"> necesitas<br class="hidden md:block" />
-          <span class="block sm:inline-block text-violet-400">lo tenes <br class="sm:hidden"> aca!</span>
+    <div class="relative flex flex-col items-start w-full max-w-xl sm:px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
+      <div class="mb-0 mt-0 mt-10 mb-12 lg:my-40 lg:max-w-lg lg:pr-5">
+        <h2 class="mb-2 sm:mb-5 inline-block font-sans  px-10 sm:px-0 font-bold tracking-tight text-gray-900 text-3xl leading-none">
+         Todo lo que <br class="hidden"> necesitas<br class="block" />
+          <span class="inline-block text-violet-400">lo tenes <br class="hidden"> aca!</span>
         </h2>
-        <p class="pr-5 hidden sm:flex mb-5 text-gray-500 md:text-lg">
+        <p class="pr-5 flex mb-5 px-10 sm:px-0 text-gray-500 md:text-lg">
           Forma parte de esta gran comunidad que te ayuda a crecer como profesional dandote ofertas laborales ideales para tu perfil.
         </p>
-        <div class="hidden sm:flex items-center justify-center sm:justify-start mt-5 sm:mt-0">
+        <div class="flex items-center justify-start px-10 sm:px-0 sm:ml-0 mt-5 sm:mt-0">
           <a
             href="#mas"
-            class="inline-flex items-center justify-center w-20 h-12 sm:w-32 sm:h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-violet-600 hover:bg-violet-700 focus:shadow-outline focus:outline-none"
+            class="inline-flex items-center justify-center w-24 h-12 sm:w-32 sm:h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-violet-600 hover:bg-violet-700 focus:shadow-outline focus:outline-none"
           >
             Comenzar
           </a>
@@ -189,7 +189,7 @@
     </div>
   </div>  
   
-      <div class="px-5 lg:px-20 mt-5 sm:mt-[-55px] md:mt-0 z-10">
+      <div class="px-5 lg:px-20 mt-[-30px] sm:mt-[-50px] lg:mt-10">
         <div class="mt-4 p-5 bg-base-100 text-white rounded">
           <h1 class="text-3xl font-semibold">Estamos para vos!</h1>
           <p class="mt-2">Entra a nuestra web y aplica a las ofertas que más te interesen! <a href="/login" class="underline">Ingresar</a></p>

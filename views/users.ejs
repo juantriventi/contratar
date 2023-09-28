@@ -20,7 +20,7 @@
   <%- include('partials/navbar') %>
 
 
-    <% if (user) { %>
+    <% if (isAuthenticated) { %>
       <div class="min-h-screen bg-primary-content pb-10 py-3">
       <div class="container sm:px-20 p-2 mx-auto">
         <button id="filter-button" class="bg-violet-600 text-white rounded-lg right-10 top-25 p-3 absolute" style="z-index: 2; margin-top: 5px;">Ver filtros</button>
